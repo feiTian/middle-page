@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>中间页</title> 
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /> 
+  <meta name="author" content="" /> 
+  <!-- Le styles --> 
+  <link href="css/bootstrap.css" rel="stylesheet" /> 
+  <link href="css/buttons.css" rel="stylesheet" /> 
+  <link href="css/flat.css" rel="stylesheet" />
+  <link href="css/font-awesome.css" rel="stylesheet" />
+  
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --> 
+  <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]--> 
+  <!-- Le fav and touch icons --> 
+ </head> 
+ <body> 
+<div id="wrapper" class="viewer">
+    <div id="sidebar-wrapper">
+        <div class="well sidebar-nav">
+            <nav id="J_menuList" class="nav nav-list">
+            </nav>
+        </div>
+    </div>
+    <div id="page-content-wrapper" class="">
+        <div class="page-content">
+            <div class="container" id="J_list_Container">
+            </div>
+        </div>
+    </div>
+    <footer class="footFix footLeft">
+
+    </footer>
+</div>
+
+<div id="loadingView" class="viewer">
+    <div class="container">
+        <div class="col-md-12 clearfix loading">
+        </div>
+    </div>
+</div><!-- Le javascript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="js/jquery.js"></script> 
+  <script src="js/bootstrap.min.js"></script> 
+  <script>
+		var iG = iG||{};
+        if(window.localStorage){
+            try{
+                iG = JSON.parse(localStorage["zaiG"])||{};
+            }catch(e){
+                localStorage.removeItem("zaiG");
+                iG = iG||{};
+            }
+        }else{
+            iG = iG||{};
+        }
+		$(function(){
+			setTimeout(function () { window.scrollTo(0, 1); }, 0);
+			
+            setTimeout(function () {
+                iG.items={
+            "汽车":[{id:"1",name:"蒙迪欧",cls:"汽车",price:"15",sels:"45",imageUrl:"images/ford.jpg"},
+					{id:"2",name:"福瑞斯",cls:"汽车",price:"23",sels:"75",imageUrl:"images/ford.jpg"},
+					{id:"3",name:"FJ",cls:"汽车",price:"45",sels:"36",imageUrl:"images/ford.jpg"},
+					{id:"4",name:"Jeep",cls:"汽车",price:"85",sels:"26",imageUrl:"images/ford.jpg"},
+                    ],
+			"电商":[{id:"7",name:"罗非鱼",cls:"电商",price:"45",sels:"12",imageUrl:"images/7.jpg"},
+					{id:"8",name:"杭州虾",cls:"电商",price:"153",sels:"8",imageUrl:"images/8.jpg"},
+					{id:"9",name:"海鲜套餐",cls:"电商",price:"255",sels:"30",imageUrl:"images/9.jpg"},
+					{id:"10",name:"贝壳",cls:"电商",price:"188",sels:"8",imageUrl:"images/10.jpg"},
+					{id:"11",name:"青鱼",cls:"电商",price:"156",sels:"8",imageUrl:"images/11.jpg"},
+					{id:"12",name:"黄鱼",cls:"电商",price:"120",sels:"8",imageUrl:"images/12.jpg"}
+                    ],
+			"金融":[{id:"13",name:"飘菜",cls:"金融",price:"152",sels:"524",imageUrl:"images/13.jpg"},
+					{id:"14",name:"苦瓜",cls:"金融",price:"154",sels:"524",imageUrl:"images/14.jpg"},
+					{id:"15",name:"西红柿辣椒黄瓜套餐",cls:"金融",price:"151",sels:"524",imageUrl:"images/15.jpg"},
+					{id:"16",name:"黄瓜",cls:"金融",price:"152",sels:"524",imageUrl:"images/16.jpg"},
+					{id:"17",name:"黄豆",cls:"金融",price:"152",sels:"524",imageUrl:"images/17.jpg"},
+					{id:"18",name:"白苦瓜",cls:"金融",price:"152",sels:"524",imageUrl:"images/18.jpg"},
+					{id:"19",name:"金融套餐1",cls:"金融",price:"152",sels:"524",imageUrl:"images/19.jpg"},
+					{id:"20",name:"金融套餐2",cls:"金融",price:"152",sels:"524",imageUrl:"images/20.jpg"}
+                    ],
+			"体育":[{id:"21",name:"大米",cls:"体育",price:"45",sels:"524",imageUrl:"images/21.jpg"},
+					{id:"22",name:"紫米",cls:"体育",price:"9",sels:"524",imageUrl:"images/22.jpg"},
+					{id:"23",name:"玉米",cls:"体育",price:"22",sels:"524",imageUrl:"images/23.jpg"}
+                    ],
+			"游戏":[{id:"24",name:"游戏",cls:"游戏",price:"152",sels:"12",imageUrl:"images/24.jpg"},
+					{id:"25",name:"游戏",cls:"游戏",price:"154",sels:"16",imageUrl:"images/25.jpg"},
+					{id:"26",name:"游戏",cls:"游戏",price:"151",sels:"18",imageUrl:"images/26.jpg"},
+					{id:"27",name:"游戏",cls:"游戏",price:"152",sels:"19",imageUrl:"images/27.jpg"},
+					{id:"28",name:"游戏",cls:"游戏",price:"152",sels:"23",imageUrl:"images/28.jpg"},
+					{id:"29",name:"游戏",cls:"游戏",price:"152",sels:"30",imageUrl:"images/29.jpg"}
+                    ],
+			};
+                init();//ajax成功后执行init(); 
+            }, 20);//模拟ajax请求时间
+
+            $("body").on("click","#J_menuList dd a",function(){
+                iG.indexMenu = $(this).attr("data_name");
+                $("#J_list_Container").html(listManger(iG.items));
+                $("#J_menuList .active").removeClass("active");
+                $(this).parent("dd").addClass("active");
+            });
+		});
+        function init(){
+            setMenu(iG.items);
+			$("#J_list_Container").html(listManger(iG.items));
+            $("#loadingView").addClass("hide");
+        }
+        
+        function setMenu(_list){
+            iG.menu = [];
+            iG.indexMenu = (function(){
+                var menu;
+                var count = 0;
+                for(var i in _list){
+                    if(count===0){
+                        menu =  i;
+                    }
+                    count++;
+                    iG.menu.push(i);
+                }
+                return menu;
+            })();
+            buildMenu(iG.menu);
+        }
+        
+        function buildMenu(_list){
+            var menuHtml = "<dl>";
+            var active;
+            for(var i in _list){
+                active = "";
+                if(_list[i]===iG.indexMenu)active = "active";
+                menuHtml += "<dd class=\""+active+"\"><a data_name=\""+ _list[i] +"\">"+ _list[i] +"</a></dd>"
+            
+            }
+			menuHtml += "</dl>";
+            $("#J_menuList").html(menuHtml);
+        }
+        
+		function getIndex(_id){
+            var indexList = iG.items[iG.indexMenu];
+			for(var i in indexList){
+				if(indexList[i].id===_id){
+					return indexList[i]
+				}
+			}
+		}
+		
+		function listManger(_list){
+			var result = "";
+			var listArr = [];
+            var indexList = _list[iG.indexMenu];
+			for(var i in indexList){
+				listArr.push(indexList[i]);
+				if(Math.floor(i/3)===0&&i>2){
+					result += "<div class=\"row\">";
+					result += buildList(listArr);
+					result += "</div>";
+					listArr = [];
+				}
+			}
+			result += "<div class=\"row\">";
+			result += buildList(listArr);
+			result += "</div>";
+			return result;
+		}
+		function buildList(_list){
+			var result = "";
+			for(var i in _list){
+				result += "<div class=\"col-md-4 clearfix foot-items\">"+
+                                "<div class=\"\">"+
+                                    "<p><strong>"+_list[i].name+"</strong></p>"+
+                                "</div>"+
+                                "<div class=\"\">"+
+                                    "<img src=\""+_list[i].imageUrl+"\" class=\"img-responsive\" alt=\"Responsive image\" data_id=\""+_list[i].id+"\" >"+
+                                "</div>"+
+                            "</div>";
+				//<button ontouchstart=\"\" class=\"list_id_respone button button-circle button-flat-primary fa fa-plus\" data_id=\""+_list[i].id+"\"></button>	
+			}
+			return result;
+		}
+	</script>  
+ </body>
+</html>
