@@ -102,29 +102,7 @@ height:100%;
   padding: 0;
 }
 
-@media (max-width:300px) {
 
-    #wrapper {
-      padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-      left: 0;
-	  width: 0;
-    }
-
-    #wrapper.active {
-      position: relative;
-      left: 90px;
-    }
-
-    #wrapper.active #sidebar-wrapper {
-      left: 0px;
-      width: 5em;
-      transition: all 0.4s ease 0s;
-    }
-
-}
 .foot-img,.foot-pick,.foot-info{
 padding: 8px 0;
 }
@@ -153,10 +131,10 @@ vertical-align: bottom;
 	font-size:14px;
 	line-height: 42px;
 }
-.sidebar-nav nav{overflow-y:auto;margin: 0;width: 100%;position: absolute;
+.sidebar-nav nav{margin: 0;width: 100%;position: absolute;
 top: 0;
-bottom: 0;background-color: #0d3b6c;box-shadow: inset -10px 0px 40px #ccccce;-webkit-overflow-scrolling:touch;}
-.sidebar-nav nav dl{margin-top: 0px;}
+bottom: 0;background-color: #0d3b6c;box-shadow: inset -10px 0px 40px #ccccce;}
+.sidebar-nav nav dl{margin-top: 0em;}
 .sidebar-nav nav dl dt,.sidebar-nav nav dl dd{margin-left: 0;text-align: center;line-height: 32px;cursor: pointer;position: relative;}
 .sidebar-nav nav dl dt{font-weight: bold;font-size: 18px;}
 .sidebar-nav nav dl dd{font-size: 13px;padding: 3px 0;padding-right: 15px;text-align: right;}
@@ -164,15 +142,6 @@ bottom: 0;background-color: #0d3b6c;box-shadow: inset -10px 0px 40px #ccccce;-we
 .sidebar-nav nav dl dd.active a{color: #fff}
 .sidebar-nav nav dl dd a{color: #fff}
 .sidebar-nav nav dl dd span{display: none; -webkit-text-size-adjust:none;font-size: 10px;position: absolute;right: 8px;top: 6px;background-color: #F66B22;color: #fff;font-family: Verdana;font-weight: normal;padding: 2px 4px;border-radius: 15px;line-height: 10px; text-align: center;opacity: 0.7}
-
-.footFix{width:100%;text-align:center;position:fixed;left:0;bottom:0;z-index:99;}
-
-.footLeft{right: 0px;left: auto;width: auto;}
-.footFix{margin-bottom: 30px;padding: 0;}
-.footFix button{padding:8px 9px;float: right;color: #fff;border: 0px;cursor: pointer;background-color:#39b868;border-radius: 2px;margin-right: 30px;position: relative;box-shadow: 0px 0px 5px #969c9b; font-size: 13px;}
-.footFix button span{font-size:10px;position: absolute;right: -10px;top:-10px;background-color: #eb3634;color:#fff;font-family:Verdana;font-weight:normal;padding:2px 5px;border:1px solid #fff;border-radius:15px;}
-.footFix button:active{box-shadow:0px 0px 15px #969c9b;background-color: #279251;}
-
 
 .btn-addfoot{
 display:block;
@@ -397,159 +366,7 @@ border-bottom: 0;
 margin-left:8px;}
 
 
-#submitView .nav.nav-tabs.nav-separated > li.active > a,
-    #submitView .nav.nav-tabs.nav-separated > li.active > a:hover,
-    #submitView .nav.nav-tabs.nav-separated > li.active > a:focus,
-    #submitView .nav.nav-pills.nav-separated > li.active > a,
-    #submitView .nav.nav-pills.nav-separated > li.active > a:hover,
-    #submitView .nav.nav-pills.nav-separated > li.active > a:focus {
-      -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
-      box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1); z-index: 10;}
-    #submitView .nav.nav-tabs.nav-separated > li > a,
-    #submitView .nav.nav-pills.nav-separated > li > a {
-      -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
-      box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1); }
-  #submitView .nav.nav-tabs.tabdrop li.tabdrop a,
-  #submitView .nav.nav-pills.tabdrop li.tabdrop a {
-    position: relative; }
-    #submitView .nav.nav-tabs.tabdrop li.tabdrop a i,
-    #submitView .nav.nav-pills.tabdrop li.tabdrop a i {
-      font-size: 14px; }
-    #submitView .nav.nav-tabs.tabdrop li.tabdrop a .badge,
-    #submitView .nav.nav-pills.tabdrop li.tabdrop a .badge {
-      position: absolute;
-      top: -7px;
-      right: -7px;
-      background-color: #16a085;
-      font-weight: 300; }
-  #submitView .nav.nav-tabs.tabdrop li.tabdrop.open .dropdown-menu,
-  #submitView .nav.nav-pills.tabdrop li.tabdrop.open .dropdown-menu {
-    left: auto; }
-  #submitView .nav.nav-tabs.tabdrop li.tabdrop.active a .badge,
-  #submitView .nav.nav-pills.tabdrop li.tabdrop.active a .badge {
-    color: white; }
-  #submitView .nav.nav-tabs > li.active > a,
-  #submitView .nav.nav-tabs > li.active > a:hover,
-  #submitView .nav.nav-tabs > li.active > a:focus,
-  #submitView .nav.nav-pills > li.active > a,
-  #submitView .nav.nav-pills > li.active > a:hover,
-  #submitView .nav.nav-pills > li.active > a:focus {
-    color: #717171;
-    background-color: white;
-    border: 1px solid transparent;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); }
-  #submitView .nav.nav-tabs > li.success > a,
-  #submitView .nav.nav-tabs > li.success > a:hover,
-  #submitView .nav.nav-tabs > li.success > a:focus,
-  #submitView .nav.nav-pills > li.success > a,
-  #submitView .nav.nav-pills > li.success > a:hover,
-  #submitView .nav.nav-pills > li.success > a:focus {
-    color: #a2d200;
-    border: 1px solid transparent;
-    -webkit-box-shadow: 0 1px 1px #a2d200;
-    box-shadow: 0 1px 1px #a2d200; }
-  #submitView .nav.nav-tabs > li.success a,
-  #submitView .nav.nav-pills > li.success a {
-    padding-left: 35px; }
-  #submitView .nav.nav-tabs > li.success:before,
-  #submitView .nav.nav-pills > li.success:before {
-    content: "\f05d";
-    position: absolute;
-    font-family: 'FontAwesome';
-    color: #a2d200;
-    z-index: 9;
-    top: 5px;
-    left: 15px;
-    font-size: 22px; }
-  #submitView .nav.nav-tabs > li.disabled > a,
-  #submitView .nav.nav-tabs > li.disabled > a:hover,
-  #submitView .nav.nav-tabs > li.disabled > a:focus,
-  #submitView .nav.nav-pills > li.disabled > a,
-  #submitView .nav.nav-pills > li.disabled > a:hover,
-  #submitView .nav.nav-pills > li.disabled > a:focus {
-    color: #ccc;
-    background-color: rgba(255, 255, 255, 0.1); }
-  #submitView .nav.nav-tabs > .open > a,
-  #submitView .nav.nav-pills > .open > a {
-    color: #8b8b8b;
-    background-color: rgba(255, 255, 255, 0.7);
-    border: 1px solid transparent; }
-  #submitView .nav.nav-tabs > .open .dropdown-menu,
-  #submitView .nav.nav-pills > .open .dropdown-menu {
-    left: 7px;
-    border: 1px solid rgba(0, 0, 0, 0.05); }
-  #submitView .nav.nav-tabs > li > a,
-  #submitView .nav.nav-pills > li > a {
-    font-weight: 300;
-    font-size: 13px;
-    color: #a4a4a4;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin-right: 0px;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    -webkit-transition: all .1s linear;
-    transition: all .1s linear; }
-.now_submit{
-margin-left: 10px;
-background-color: #FFF;
--webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
-padding-bottom: 10px;
-margin-bottom:10px;
-}
-.form-group {
-margin-bottom: 15px;
-padding: 20px;
-}
-label {
-display: inline-block;
-margin-bottom: 5px;
-font-weight: bold;
-width:100%
-}
-.twitter-typeahead {
-width: 100%;
-}
-body #submitView .uneditable-input, 
-body #submitView textarea, 
-body #submitView input[type="text"], 
-body #submitView input[type="password"], 
-body #submitView input[type="datetime"], 
-body #submitView input[type="datetime-local"], 
-body #submitView input[type="date"], 
-body #submitView input[type="month"], 
-body #submitView input[type="time"], 
-body #submitView input[type="week"], 
-body #submitView input[type="number"], 
-body #submitView input[type="email"], 
-body #submitView input[type="url"], 
-body #submitView input[type="search"], 
-body #submitView input[type="tel"], 
-body #submitView input[type="color"] {
--webkit-appearance: none !important;
-color: #717171;
-outline: 0;
-height: 16px;
-padding: 6px 11px !important;
-line-height: 18px;
-font-size: 13px;
-vertical-align: top;
-background-color: #fafafa;
-min-height: 37px;
-filter: none !important;
--webkit-box-shadow: none !important;
--moz-box-shadow: none !important;
-box-shadow: none !important;
--webkit-border-radius: 0;
--moz-border-radius: 0;
--ms-border-radius: 0;
--o-border-radius: 0;
-border-radius: 0;
-border: 1px solid #ececec;
--webkit-transition: all .2s linear;
-transition: all .2s linear;
-}
+
 .form-control.tt-query{
 position: relative; vertical-align: top; background-color: transparent;
 }
