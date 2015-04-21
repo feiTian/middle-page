@@ -127,47 +127,19 @@ height:100%;
 	}
 
 }
-@media (min-width: 768px) {
-  #sidebar-wrapper {
-	margin-left: -150px;
-    left: 150px;
-	width: 150px;
-  }
-  #wrapper {
-	padding-left: 150px;
-  }
-    .container{
-	width:600px
-	}
-#addOrder,#clearOder{
-	padding:0px 25.6px;
-}
-}
-@media (min-width: 992px) {
-  #sidebar-wrapper {
-	margin-left: -200px;
-    left: 200px;
-	width: 200px;
-  }
-    #wrapper {
-	padding-left: 200px;
-  }
-    .container{
-	width:790px
-	}
-}
+
 
 @media (min-width: 1200px) {
   #sidebar-wrapper {
 	margin-left: -250px;
     left: 250px;
-	width: 250px;
+	width: 10%;
   }
     #wrapper {
-	padding-left: 250px;
+	padding-left: 0;
   }
     .container{
-	width:950px
+	width:100%
 	}
 }
 
