@@ -95,11 +95,11 @@
                 init();//ajax成功后执行init(); 
             }, 20);//模拟ajax请求时间
 
-            $("body").on("click","#J_menuList dd a",function(){
-                iG.indexMenu = $(this).attr("data_name");
+            $("body").on("click","#J_menuList dd",function(){
+                iG.indexMenu = $(this).children("a").attr("data_name");
                 $("#J_list_Container").html(listManger(iG.items));
                 $("#J_menuList .active").removeClass("active");
-                $(this).parent("dd").addClass("active");
+                $(this).addClass("active");
             });
 		});
         function init(){
