@@ -212,7 +212,7 @@ height:100%;
 
     #wrapper.active #sidebar-wrapper {
       left: 90px;
-      width: 90px;
+      width: 5em;
       transition: all 0.4s ease 0s;
     }
 

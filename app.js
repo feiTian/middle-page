@@ -36,7 +36,7 @@ app.get('/restaurant', restaurant.getNearbyRestaurant);
 app.get('/restaurant/:restaurantID/menu', restaurant.getMenuList);
 app.post('/restaurant/register', restaurant.register);
 
-var server = app.listen(4000, function () {
+var server = app.listen(9000, function () {
 
   var host = server.address().address
   var port = server.address().port
