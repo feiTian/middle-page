@@ -23,7 +23,7 @@
     </div>
     <div id="page-content-wrapper" class="">
         <div class="page-content">
-            <div class="container" id="J_list_Container">
+            <div id="J_list_Container">
             </div>
         </div>
     </div>
@@ -154,13 +154,13 @@
 			for(var i in indexList){
 				listArr.push(indexList[i]);
 				if(Math.floor(i/3)===0&&i>2){
-					result += "<div class=\"row\">";
+					result += "<div";
 					result += buildList(listArr);
 					result += "</div>";
 					listArr = [];
 				}
 			}
-			result += "<div class=\"row\">";
+			result += "<div>";
 			result += buildList(listArr);
 			result += "</div>";
 			return result;
