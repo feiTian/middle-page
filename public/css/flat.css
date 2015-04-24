@@ -81,11 +81,10 @@ height:100%;
 
 #sidebar-wrapper {
   position: fixed;
-  height: 100%;
-  overflow-y: auto;
+  width:100%;height:4em;
+  overflow-y: hidden;
   overflow-x: hidden;
   z-index: 1000;
-  transition: all 0.4s ease 0s;
 }
 
 #page-content-wrapper {
@@ -131,11 +130,9 @@ vertical-align: bottom;
 	font-size:14px;
 	line-height: 42px;
 }
-.sidebar-nav nav{margin: 0;width: 100%;position: absolute;
-top: 0;
-bottom: 0;background-color: #0d3b6c;}
+.sidebar-nav nav{margin: 0;width: 100%;position: absolute;top: 0;bottom: 0;background-color: #0d3b6c;}
 .sidebar-nav nav dl{margin-top: 0em;}
-.sidebar-nav nav dl dt,.sidebar-nav nav dl dd{margin-left: 0;text-align: center;line-height: 32px;cursor: pointer;position: relative;}
+.sidebar-nav nav dl dt,.sidebar-nav nav dl dd{margin-left: 0;text-align: center;line-height: 32px;cursor: pointer;position: relative;float: right;}
 .sidebar-nav nav dl dt{font-weight: bold;font-size: 18px;}
 .sidebar-nav nav dl dd{font-size: 13px;padding: 3px 0;padding-right: 15px;text-align: right;}
 .sidebar-nav nav dl dd.active{color: #fff;background-color:#330066;}
