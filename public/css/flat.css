@@ -130,12 +130,12 @@ vertical-align: bottom;
 	font-size:14px;
 	line-height: 42px;
 }
-.sidebar-nav nav{margin: 0;width: 100%;position: absolute;top: 0;bottom: 0;background-color: #0d3b6c;}
-.sidebar-nav nav dl{margin-top: 0em;}
+.sidebar-nav nav{margin: 0;width: 100%;position: absolute;top: 0;bottom: 0;background-color: rgb(212,61,61);text-align: center;}
+.sidebar-nav nav dl{margin-top: 0em;text-align: center;}
 .sidebar-nav nav dl dt,.sidebar-nav nav dl dd{margin-left: 0;text-align: center;line-height: 32px;cursor: pointer;position: relative;float: right;}
 .sidebar-nav nav dl dt{font-weight: bold;font-size: 18px;}
-.sidebar-nav nav dl dd{font-size: 13px;padding: 3px 0;padding-right: 15px;text-align: right;}
-.sidebar-nav nav dl dd.active{color: #fff;background-color:#330066;}
+.sidebar-nav nav dl dd{font-size: 13px;padding: 3px 0;padding-right: 15px;text-align: center;}
+.sidebar-nav nav dl dd.active{color: #fff;background-color:rgb(212,1,1);}
 .sidebar-nav nav dl dd.active a{color: #fff}
 .sidebar-nav nav dl dd a{color: #fff}
 .sidebar-nav nav dl dd span{display: none; -webkit-text-size-adjust:none;font-size: 10px;position: absolute;right: 8px;top: 6px;background-color: #F66B22;color: #fff;font-family: Verdana;font-weight: normal;padding: 2px 4px;border-radius: 15px;line-height: 10px; text-align: center;opacity: 0.7}
