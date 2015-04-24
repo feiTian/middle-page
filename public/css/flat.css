@@ -133,7 +133,7 @@ vertical-align: bottom;
 }
 .sidebar-nav nav{margin: 0;width: 100%;position: absolute;
 top: 0;
-bottom: 0;background-color: #0d3b6c;box-shadow: inset -10px 0px 40px #ccccce;}
+bottom: 0;background-color: #0d3b6c;}
 .sidebar-nav nav dl{margin-top: 0em;}
 .sidebar-nav nav dl dt,.sidebar-nav nav dl dd{margin-left: 0;text-align: center;line-height: 32px;cursor: pointer;position: relative;}
 .sidebar-nav nav dl dt{font-weight: bold;font-size: 18px;}
