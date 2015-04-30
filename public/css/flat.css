@@ -132,7 +132,7 @@ vertical-align: bottom;
 }
 .sidebar-nav nav{margin: 0;width: 100%;position: absolute;top: 0;bottom: 0;background-color: rgb(212,61,61);text-align: center;}
 .sidebar-nav nav dl{margin-top: 0em;text-align: center;}
-.sidebar-nav nav dl dd{line-height: 32px;cursor: pointer;position: relative;float: left;font-size: 13px;padding: 3px 0;padding-right: 15px;}
+.sidebar-nav nav dl dd{line-height: 400%;cursor: pointer;position: relative;float: left;font-size: 13px;padding-right: 15px;}
 .sidebar-nav nav dl dd.active{color: #fff;background-color:rgb(150,1,1);}
 .sidebar-nav nav dl dd.active a{color: #fff}
 .sidebar-nav nav dl dd a{color: #fff}
