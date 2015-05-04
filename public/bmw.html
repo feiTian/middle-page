@@ -22,7 +22,18 @@
     <div>
         <div id="sidebar-wrapper" style="">
             <div class="sidebar-nav" style="text-align:center">
-                <nav id="J_menuList" style="text-align:center">
+                <nav id="J_menuList" style="text-align:center;background-color:white;height:3em;">
+                    <dl>
+                        <dd style="padding-left:0.4em;width:10%;">
+                            <a style="font-size:1.2em;color:black;font-weight:bold;" ><img src="images\left.png"/></a>
+                        </dd>
+                        <dd style="padding-left:0.4em;width:80%;">
+                            <a style="font-size:1.2em;color:black;font-weight:bold;" >流量红包</a>
+                        </dd>
+                        <dd style="float:right;width:10%;">
+                            <a class="" style="font-size:1em;background-color:white;color:black;border-radius:3px;border: 1px solid grey;text-align:center;padding:0.5em;" >首页</a>
+                        </dd>
+                    </dl>
                 </nav>
             </div>
         </div>
@@ -102,7 +113,7 @@
                 menuHtml += "<dd class=\""+active+"\" style=\"padding-left:0.4em;width:5em;\"><a style=\"font-size:1.2em;\" data_name=\""+ _list[i] +"\">"+ _list[i] +"</a></dd>"
             }
 			menuHtml += "</dl>";
-            $("#J_menuList").html(menuHtml);
+            //$("#J_menuList").html(menuHtml);
         }
         
 		function getIndex(_id){
