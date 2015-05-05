@@ -16,6 +16,13 @@
         .hey-btn { display: inline-block; background-color: #fe532d; color: white; text-decoration: none; font-family: 'Microsoft YaHei', sans-serif; text-align: center; border: none; cursor: pointer; }
         .hey-btn:hover { background-color: #ff8600; color: #ffffff; text-decoration: none; }
         .hey-btn-default { font-size: 1.1em; padding: 0.5em 0.9em; }
+
+        .sidebar-nav nav{margin: 0;width: 100%;position: absolute;top: 0;bottom: 0;background-color: rgb(212,61,61);text-align: center;}
+        .sidebar-nav nav dl{margin-top: 0em;text-align: center;}
+        .sidebar-nav nav dl dd{line-height: 400%;cursor: pointer;position: relative;float: left;font-size: 13px;padding-right: 15px;}
+        .sidebar-nav nav dl dd.active{color: #fff;background-color:white;}
+        .sidebar-nav nav dl dd.active a{color: #fff}
+        .sidebar-nav nav dl dd a{color: #fff}
     </style> 
 </head> 
 <body style="text-align: center;"> 
@@ -30,8 +37,8 @@
                         <dd style="width:64%;padding:0px;">
                             <a style="font-size:1.2em;color:black;font-weight:bold;" >流量红包</a>
                         </dd>
-                        <dd style="float:right;width:18%;padding:0px;">
-                            <a class="" style="font-size:1em;background-color:white;color:black;border-radius:3px;border: 1px solid grey;text-align:center;padding:0.5em;" >首页</a>
+                        <dd style="float:right;width:18%;padding:0px;" onclick="" keydown="">
+                            <a class="" style="font-size:1em;background-color:white;color:black;border-radius:3px;border: 1px solid grey;text-align:center;padding:0.5em;" href="http://17wo.cn/Index.action?">首页</a>
                         </dd>
                     </dl>
                 </nav>
@@ -74,12 +81,12 @@
                 init();//ajax成功后执行init(); 
             }, 20);//模拟ajax请求时间
 
-            $("body").on("click","#J_menuList dd",function(){
+            /*$("body").on("click","#J_menuList dd",function(){
                 iG.indexMenu = $(this).children("a").attr("data_name");
                 $("#J_list_Container").html(listManger(iG.items));
                 $("#J_menuList .active").removeClass("active");
                 $(this).addClass("active");
-            });
+            });*/
 		});
         function init(){
             setMenu(iG.items);
