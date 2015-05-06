@@ -21,20 +21,8 @@ app.use(allowCrossDomain);
 app.use('/', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
-//*****user routes
-app.post('/user', user.doLogin);
-app.post('/code', user.fetchCode_res);
 
-//*****user request routes
-app.post('/userRequest', userRequest.createUserRequest);
-app.get( '/userRequest/:id/offer', userRequest.getOfferList);
-app.post('/userRequest/:id/offerTaken', userRequest.takeOffer);
-app.post('/userRequest/:id/offerConfirmation', userRequest.confirmOffer);
-
-//*****restaurant routes
-app.get('/restaurant', restaurant.getNearbyRestaurant);
-app.get('/restaurant/:restaurantID/menu', restaurant.getMenuList);
-app.post('/restaurant/register', restaurant.register);
+app.post('/AdRequest', userRequest.AdRequest);
 
 var server = app.listen(9000, function () {
 

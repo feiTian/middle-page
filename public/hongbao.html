@@ -14,7 +14,7 @@
 				contentType: "application/json; charset=utf-8",
 				crossDomain: true
 			});
-			var apiHost = 'http://124.207.207.26:8080/';
+			var apiHost = 'http://localhost:9000/';
 			var query = {
 						  "device": {
 						    "did": "09fc4c589a4e03779f1935518c3df2a7",
@@ -43,10 +43,11 @@
 
 	        function getAd(callback){
 	            console.log(query);
-	            $.post(apiHost + "RTB/rest/adrequest",
+	            $.post(apiHost + "AdRequest",
 	            	JSON.stringify(query),  
 	                function(data){
-	                	console.log(data);
+	                	console.log(data.adurl);
+	                	$('#ad_image').attr('src', data.adurl);
 	                	//callback(data, "OK");
 	            }).fail(function(xHr, status, message){
 	                console.log('error');
@@ -73,8 +74,8 @@
 						<div class="mediabox">
 							<h4 class="back">恭喜拿到宝马i8一起沃流量红包，可兑换为手机流量</h4>
 							<h3>"价"给你 我愿意 上海大众 钜惠风暴</h3>
-							<img src="images/07.png" alt="img07" />
-							<div class="text_img"><a>1M</a><a style="font-size:1em;">流量</a></div>
+							<img id="ad_image" src="" alt="loading" />
+							<div class="text_img" ><a>1M</a><a style="font-size:1em;">流量</a></div>
 							<h4>流量已经放入一起沃流量账户</h4>
 							<h4 class="orange">宝马i8</h4>
 						</div>
