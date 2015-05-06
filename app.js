@@ -18,7 +18,7 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 
-app.all(allowCrossDomain);
+app.use(allowCrossDomain);
 app.use('/', express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
