@@ -28,7 +28,7 @@ exports.AdRequest = function(req, res){
 					  "imp": [
 					    {
 					      "h": 120,
-					      "impid": "08604401000020001",
+					      "impid": "08604401000010009",
 					      "pos": 1,
 					      "w": 640
 					    }
