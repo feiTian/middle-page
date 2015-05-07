@@ -11,6 +11,7 @@ var pool  = require('./db').pool;
 
 exports.AdRequest = function(req, res){
 	console.log("AdRequest");
+	console.log(req.body);
 	try{
 		var query = {
 					  "device": {
@@ -41,7 +42,7 @@ exports.AdRequest = function(req, res){
 				{
 					url: 'http://124.207.207.26:8080/RTB/rest/adrequest',
 					method: 'POST',
-					json: query
+					json: req.body
 				},
 				function (error, response, body) {
 					if (!error && response.statusCode == 200) {
