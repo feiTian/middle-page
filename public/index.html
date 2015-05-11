@@ -1,217 +1,158 @@
 <!DOCTYPE html>
-<html>
-<head> 
-    <meta charset="utf-8" /> 
-    <title>中间页</title> 
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /> 
-    <meta name="author" content="" /> 
-    <link href="css/bootstrap.css" rel="stylesheet" /> 
-    <link href="css/buttons.css" rel="stylesheet" /> 
-    <link href="css/flat.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
-    <link href="./css/frame.css" type="text/css" rel="stylesheet" charset="utf-8">
-    <link href="./css/home_A.css" type="text/css" rel="stylesheet" charset="utf-8">
-    <link id="skin_style" href="./css/skin.css" type="text/css" rel="stylesheet" charset="utf-8"> 
-</head> 
- <body> 
-<div>
-    <div id="sidebar-wrapper" style="">
-        <div class="sidebar-nav" style="text-align:center">
-            <nav id="J_menuList" style="text-align:center">
-            </nav>
-        </div>
-    </div>
-    <div id="J_list_Container" style="position:relative;top:4em;">
-    </div>
-</div>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="js/jquery.js"></script> 
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
 
-<div id="loadingView" class="viewer">
-    <div class="container">
-        <div class="col-md-12 clearfix loading">
-        </div>
-    </div>
-</div><!-- Le javascript
-    ================================================== --> 
-  <!-- Placed at the end of the document so the pages load faster --> 
-  <script src="js/jquery.js"></script> 
-  <script src="js/bootstrap.min.js"></script> 
-  <script>
-        $.ajaxSetup({
-            contentType: "application/json; charset=utf-8",
-            crossDomain: true
-        });
-        var apiHost = 'http://123.57.254.32:9000/';//'http://localhost:9000/'; //
-        var query = {
-                      "device": {
-                        "did": "09fc4c589a4e03779f1935518c3df2a7",
-                        "dpid": "c7299603f205f356b66625fb62b3a995",
-                        "ip": "202.165.28.29",
-                        "make": "Apple",
-                        "model": "Iphone 5s",
-                        "os": "ios",
-                        "osv": "ios 7.0.1"
-                      },
-                      "browser": {
-                        
-                      },
-                      "imp": [
-                        {
-                          "h": 120,
-                          "impid": "08604401000010009",
-                          "pos": 1,
-                          "w": 640
-                        }
-                      ],
-                      "requestid": "b6b01bcb5c2d4421c58718a680466422",
-                      "userid": "904436969",
-                      "phonetype": "1"
-                    };
-        var done = 0;
-        function getAd(index, callback){
-            console.log(query);
-            $.post(apiHost + "AdRequest",
-                JSON.stringify(query),  
-                function(data){
-                    console.log(data.adurl);
-                    $('#ad_image').attr('src', data.adurl);
-                    
-                    iG.items.广告[index].imageUrl = data.adurl;
-                    console.log(done + iG.items.广告[index].imageUrl);
-                    done+=1;
-                    if(done > 2)
-                        init();
-                    //callback(data, "OK");
-            }).fail(function(xHr, status, message){
-                console.log('error');
-                //callback(message, "Fail");        
-            });
-        }
+		<link rel="stylesheet" type="text/css" href="css/hongbao.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+		<style>
+	        .button {
+	            border-radius:3px;
+	            font-size:2.5vmin;
+	            font-family:'microsoft yahei', Arial, Helvetica, sans-serif;
+	            padding-top:0.2em;
+	            padding-bottom:0.2em;
+	            padding-left: 0px;
+	            padding-right: 0px;
+	            border: 1px solid #dd962d;
 
-		var iG = {};
-        iG.items={
-            广告:[{id:"1",name:"全新蒙迪欧已快乐上市",cls:"汽车",price:"15",sels:"45",imageUrl:"images/ford.jpg"},
-                    {id:"2",name:"新款福瑞斯，引爆汽车新潮流，你值得拥有",cls:"汽车",price:"23",sels:"75",imageUrl:"images/example.jpg"},
-                    {id:"3",name:"FJ",cls:"汽车",price:"45",sels:"36",imageUrl:"images/example.jpg"},
-                    ],
-            "电商":[{id:"7",name:"罗非鱼",cls:"电商",price:"45",sels:"12",imageUrl:"images/7.jpg"},
-                    {id:"8",name:"杭州虾",cls:"电商",price:"153",sels:"8",imageUrl:"images/8.jpg"},
-                    {id:"9",name:"海鲜套餐",cls:"电商",price:"255",sels:"30",imageUrl:"images/9.jpg"},
-                    {id:"10",name:"贝壳",cls:"电商",price:"188",sels:"8",imageUrl:"images/10.jpg"},
-                    {id:"11",name:"青鱼",cls:"电商",price:"156",sels:"8",imageUrl:"images/11.jpg"},
-                    {id:"12",name:"黄鱼",cls:"电商",price:"120",sels:"8",imageUrl:"images/12.jpg"}
-                    ],
-            "金融":[{id:"13",name:"飘菜",cls:"金融",price:"152",sels:"524",imageUrl:"images/13.jpg"},
-                    {id:"14",name:"苦瓜",cls:"金融",price:"154",sels:"524",imageUrl:"images/14.jpg"},
-                    {id:"15",name:"西红柿辣椒黄瓜套餐",cls:"金融",price:"151",sels:"524",imageUrl:"images/15.jpg"},
-                    {id:"16",name:"黄瓜",cls:"金融",price:"152",sels:"524",imageUrl:"images/16.jpg"},
-                    {id:"17",name:"黄豆",cls:"金融",price:"152",sels:"524",imageUrl:"images/17.jpg"},
-                    {id:"18",name:"白苦瓜",cls:"金融",price:"152",sels:"524",imageUrl:"images/18.jpg"},
-                    {id:"19",name:"金融套餐1",cls:"金融",price:"152",sels:"524",imageUrl:"images/19.jpg"},
-                    {id:"20",name:"金融套餐2",cls:"金融",price:"152",sels:"524",imageUrl:"images/20.jpg"}
-                    ],
-            "体育":[{id:"21",name:"大米",cls:"体育",price:"45",sels:"524",imageUrl:"images/21.jpg"},
-                    {id:"22",name:"紫米",cls:"体育",price:"9",sels:"524",imageUrl:"images/22.jpg"},
-                    {id:"23",name:"玉米",cls:"体育",price:"22",sels:"524",imageUrl:"images/23.jpg"}
-                    ],
-            "游戏":[{id:"24",name:"游戏",cls:"游戏",price:"152",sels:"12",imageUrl:"images/24.jpg"},
-                    {id:"25",name:"游戏",cls:"游戏",price:"154",sels:"16",imageUrl:"images/25.jpg"},
-                    {id:"26",name:"游戏",cls:"游戏",price:"151",sels:"18",imageUrl:"images/26.jpg"},
-                    {id:"27",name:"游戏",cls:"游戏",price:"152",sels:"19",imageUrl:"images/27.jpg"},
-                    {id:"28",name:"游戏",cls:"游戏",price:"152",sels:"23",imageUrl:"images/28.jpg"},
-                    {id:"29",name:"游戏",cls:"游戏",price:"152",sels:"30",imageUrl:"images/29.jpg"}
-                    ],
-            };
-		$(function(){
-            getAd(0, null);
-            getAd(1, null);
-            getAd(2, null);
-            $("body").on("click","#J_menuList dd",function(){
-                iG.indexMenu = $(this).children("a").attr("data_name");
-                $("#J_list_Container").html(listManger(iG.items));
-                $("#J_menuList .active").removeClass("active");
-                $(this).addClass("active");
-            });
-		});
-        function init(){
-            console.log(iG.items);
-            setMenu(iG.items);
-			$("#J_list_Container").html(listManger(iG.items));
-            $("#loadingView").addClass("hide");
-        }
-        
-        function setMenu(_list){
-            iG.menu = [];
-            iG.indexMenu = (function(){
-                var menu;
-                var count = 0;
-                for(var i in _list){
-                    if(count===0){
-                        menu =  i;
-                    }
-                    count++;
-                    iG.menu.push(i);
-                }
-                return menu;
-            })();
-            buildMenu(iG.menu);
-        }
-        
-        function buildMenu(_list){
-            var menuHtml = "<dl style=\"text-align:center\">";
-            var active;
-            for(var i in _list){
-                active = "";
-                if(_list[i]===iG.indexMenu)active = "active";
-                menuHtml += "<dd class=\""+active+"\" style=\"width: 20%\"><a style=\"font-size:1.2em;\" data_name=\""+ _list[i] +"\">"+ _list[i] +"</a></dd>"
+	            background-color: #EDEDED;
+	            color:#FF7B16;  
+
+	            box-shadow: none !important;
+	            text-decoration: none;
+	        } 
+		</style>
+		<script type="text/javascript">
+	        $.ajaxSetup({
+	            contentType: "application/json; charset=utf-8",
+	            crossDomain: true
+	        });
+	        var apiHost = 'http://123.57.254.32:9000/';//'http://localhost:9000/'; //
+	        var query = {
+	                      "device": {
+	                        "did": "09fc4c589a4e03779f1935518c3df2a7",
+	                        "dpid": "c7299603f205f356b66625fb62b3a995",
+	                        "ip": "202.165.28.29",
+	                        "make": "Apple",
+	                        "model": "Iphone 5s",
+	                        "os": "ios",
+	                        "osv": "ios 7.0.1"
+	                      },
+	                      "browser": {
+	                        
+	                      },
+	                      "imp": [
+	                        {
+	                          "h": 120,
+	                          "impid": "08604401000010009",
+	                          "pos": 1,
+	                          "w": 640
+	                        }
+	                      ],
+	                      "requestid": "b6b01bcb5c2d4421c58718a680466422",
+	                      "phonenumber": "",
+	                      "userid": "904436969",
+	                      "phonetype": "1"
+	                    };
+	        var done = 0;
+	        function getAd(img_index, callback){
+	            $.post(apiHost + "AdRequest",
+	                JSON.stringify(query),  
+	                function(data){
+	                    console.log(data.adurl);
+	                    $(img_index).attr('src', data.adurl);	                    
+	            }).fail(function(xHr, status, message){
+	                console.log('error');
+	                //callback(message, "Fail");        
+	            });
+	        }
+            //getAd('#ad_img_1', null);
+            //getAd('#ad_img_2', null);
+            //getAd('#ad_img_3', null);
+
+            function getHongbao(ad){
+            	console.log('get hongbao');
+	            $.post(apiHost + "getHongbao",
+					JSON.stringify({phonenumber: query.phonenumber, ad_id:ad}}),
+					function(data){
+	                    console.log(data);
+	            }).fail(function(xHr, status, message){
+	                console.log('error');
+	                //callback(message, "Fail");        
+	            });            	
             }
-			menuHtml += "</dl>";
-            $("#J_menuList").html(menuHtml);
-        }
-        
-		function getIndex(_id){
-            var indexList = iG.items[iG.indexMenu];
-			for(var i in indexList){
-				if(indexList[i].id===_id){
-					return indexList[i]
-				}
-			}
-		}
-		
-		function listManger(_list){
-			var result = "";
-			var listArr = [];
-            var indexList = _list[iG.indexMenu];
-			for(var i in indexList){
-				listArr.push(indexList[i]);
-				if(Math.floor(i/3)===0&&i>2){
-					result += "<div";
-					result += buildList(listArr);
-					result += "</div>";
-					listArr = [];
-				}
-			}
-			result += "<div>";
-			result += buildList(listArr);
-			result += "</div>";
-			return result;
-		}
-		function buildList(_list){
-			var result = "";
-			for(var i in _list){
-				result += "<div class=\"WB_cardwrap WB_feed_type S_bg2\" style=\"background-color:white\">    <div class=\"WB_feed_detail clearfix\">       <div class=\"\">            <div class=\"WB_info\">                <a target=\"_blank\" class=\"W_f14\" href=\"\" style=\"color:rgb(72,72,72);font-size:2em;font-family:SimHei\">"+_list[i].name+"</a>                          </div>         <div class=\"WB_media_wrap clearfix\">              <div class=\"media_box\">                    <div>                        <ul>                            <li ><img src=\""+_list[i].imageUrl+ "\" style=\"width:100%\"></li>                                                    </ul>                    </div>                </div>            </div>            <div class=\"WB_expand_media_box\" style=\"display: none;\"></div>            <div class=\"WB_from S_txt2\">            <a target=\"_blank\" href=\"\"  class=\"S_txt2\" style=\"background-color:rgb(202,202,202)\">推广</a>  <a class=\"S_txt2\" target=\"_blank\" href=\"\">&nbsp;&nbsp;福特&nbsp;&nbsp;</a> <a class=\"S_txt2\" target=\"_blank\" href=\"\"  style=\"color:rgb(173,173,173)\">评论 0</a></div>       </div>    </div>    <div class=\"WB_feed_handle\">  </div>";
 
-                            /*"<div class=\"col-md-4 clearfix foot-items\">"+
-                                "<div class=\"\">"+
-                                    "<p><strong>"+_list[i].name+"</strong></p>"+
-                                "</div>"+
-                                "<div class=\"\">"+
-                                    "<img src=\""+_list[i].imageUrl+"\" class=\"img-responsive\" alt=\"Responsive image\" data_id=\""+_list[i].id+"\" >"+
-                                "</div>"+
-                            "</div>";*/
-				//<button ontouchstart=\"\" class=\"list_id_respone button button-circle button-flat-primary fa fa-plus\" data_id=\""+_list[i].id+"\"></button>	
-			}
-			return result;
-		}
-	</script>  
- </body>
+            function popup(ad){
+			query.phonenumber = getUrlParam('phonenumber');
+            	console.log(query);
+            	getHongbao(ad);
+            	window.location.href='./hongbao.html?'+ad;
+            	//$("#dialog").dialog();
+            }
+            function getUrlParam(name){
+            	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) 
+					return unescape(r[2]); 
+				return null;
+            }
+            function init() {
+            	
+            }
+		</script>
+	</head>
+	<body onload="init()">
+		<div class="container">
+			<header>
+				<nav>
+					<a style="height:5em;">创意投票
+					<h2>从三个作品中选择最有创意的一个投票得1M流量</h2>
+					</a>
+					</nav>
+			</header>
+			<section>
+						<div class="mediabox" id="ad_2">
+							<h3>免税店直接发货，上市公司的保证！</h3>
+							
+							<img src="images/jumei.jpg" alt="img02" id="ad_img_2"/>
+							<a class="adflag">推广</a>
+							<a class="adname">&nbsp;&nbsp;聚美&nbsp;&nbsp;</a>
+							<a class="adname">投票数 10</a>
+							<a href="javascript:popup('jumei');" class="button" style="line-height:1.2em;font-size:1.5em;padding:0 1em;margin:0.1em;float:right;">投票</a>
+							<li class=""></li>
+						</div>
+						<div class="mediabox" id="ad_3">
+							<h3>世界那么大，带上心爱的她去看看。主题房，5折起！
+							</h3>
+							<img src="images/tujia.jpg" alt="img03" id="ad_img_3"/>
+							<a class="adflag">推广</a>
+							<a class="adname">&nbsp;&nbsp;途家网&nbsp;&nbsp;</a>
+							<a class="adname">投票数 10</a>
+							<a href="javascript:popup('tujia');" class="button" style="line-height:1.2em;font-size:1.5em;padding:0 1em;margin:0.1em;float:right;">投票</a>
+							<li class=""></li>
+						</div>
+						<div class="mediabox" id="ad_1">
+							<h3>联通用户专享特价旅游，低到你不敢想！
+							</h3>
+							
+							<img src="images/zailushang.jpg" alt="img01" id="ad_img_1"/>
+							<a class="adflag">推广</a>
+							<a class="adname">&nbsp;&nbsp;在路上&nbsp;&nbsp;</a>
+							<a class="adname">投票数 10</a>
+							<a href="javascript:popup('zailushang');" class="button" style="line-height:1.2em;font-size:1.5em;padding:0 1em;margin:0.1em;float:right;">投票</a>
+						</div>
+			</section>
+		</div>
+
+		<div id="dialog" title="恭喜您！" style="display:none;">
+			<p>您已获得10M流量</p>
+		</div>
+	</body>
 </html>
