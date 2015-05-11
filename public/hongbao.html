@@ -56,7 +56,18 @@
 	        }
 
 	        function init() {
-	        	getAd(null);
+	        	//getAd(null);
+	        	var ad = window.location.search.replace('?','');
+	        	if(ad == 'jumei'){
+	        		$('#ad_image').attr('src', 'images/jumei.jpg');
+	        		$('#slogan').html('热门夏装来袭，联通特惠1折起！');
+	        	}else if(ad == 'tujia'){
+	        		$('#ad_image').attr('src', 'images/tujia.jpg');
+	        		$('#slogan').html('世界那么大，带上心爱的她去看看。主题房，5折起！');
+	        	}else if(ad == 'zailushang'){
+	        		$('#ad_image').attr('src', 'images/zailushang.jpg');
+	        		$('#slogan').html('联通用户专享特价旅游，低到你不敢想！');
+	        	}
 	        }
 		</script>
 		<!--[if IE]>
@@ -72,7 +83,7 @@
 			</header>
 			<section>
 						<div class="mediabox">
-							<h4 class="back">恭喜拿到宝马i8一起沃流量红包，可兑换为手机流量</h4>
+							<h4 class="back" id="slogan">恭喜拿到宝马i8一起沃流量红包，可兑换为手机流量</h4>
 							<h3>"价"给你 我愿意 上海大众 钜惠风暴</h3>
 							<img id="ad_image" src="" alt="loading" />
 							<div class="text_img" >
