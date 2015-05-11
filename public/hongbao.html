@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 
 		<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src="js/lib/string.js"></script>
 
 		<script>
 			$.ajaxSetup({
@@ -58,15 +59,22 @@
 	        function init() {
 	        	//getAd(null);
 	        	var ad = window.location.search.replace('?','');
+	        	var cong_str = '恭喜拿到【{0}】一起沃流量红包，可兑换为手机流量';
 	        	if(ad == 'jumei'){
 	        		$('#ad_image').attr('src', 'images/jumei.jpg');
-	        		$('#slogan').html('热门夏装来袭，联通特惠1折起！');
+	        		$('#cong').html(cong_str.format("聚美"));
+	        		$('#brand').html("聚美");
+	        		$('#slogan').html('免税店直接发货，上市公司的保证！');
 	        	}else if(ad == 'tujia'){
 	        		$('#ad_image').attr('src', 'images/tujia.jpg');
+	        		$('#cong').html(cong_str.format("途家"));
 	        		$('#slogan').html('世界那么大，带上心爱的她去看看。主题房，5折起！');
+	        		$('#brand').html("途家");
 	        	}else if(ad == 'zailushang'){
 	        		$('#ad_image').attr('src', 'images/zailushang.jpg');
+	        		$('#cong').html(cong_str.format("在路上"));
 	        		$('#slogan').html('联通用户专享特价旅游，低到你不敢想！');
+	        		$('#brand').html("在路上");
 	        	}
 	        }
 		</script>
@@ -83,8 +91,8 @@
 			</header>
 			<section>
 						<div class="mediabox">
-							<h4 class="back" id="slogan">恭喜拿到宝马i8一起沃流量红包，可兑换为手机流量</h4>
-							<h3>"价"给你 我愿意 上海大众 钜惠风暴</h3>
+							<h4 class="back" id="cong">恭喜拿到宝马i8一起沃流量红包，可兑换为手机流量</h4>
+							<h3 id="slogan">"价"给你 我愿意 上海大众 钜惠风暴</h3>
 							<img id="ad_image" src="" alt="loading" />
 							<div class="text_img" >
 								<div style="margin-left:-20%;margin-top:-5%;">
@@ -92,7 +100,7 @@
 								</div>
 							</div>
 							<h4>流量已经放入一起沃流量账户</h4>
-							<h4 class="orange">宝马i8</h4>
+							<h4 class="orange" id="brand">宝马i8</h4>
 						</div>
 			</section>
 		</div>
