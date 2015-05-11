@@ -7,6 +7,7 @@
 
 mysql = require('mysql');
 request = require('request');
+fs = require('fs');
 var pool  = require('./db').pool;
 
 exports.AdRequest = function(req, res){
@@ -67,3 +68,24 @@ exports.AdRequest = function(req, res){
 		console.log(e);
 	}
 };
+
+exports.getHongbao = function(req, res){
+	console.log("getHongbao");
+	console.log(req.body);
+
+	fs.open('public\\log.txt', 'a', function(e, fd){
+		if(e)
+			throw e;
+		var l = Date.now() + " " + req.body.phonenumber + " 1M " + "\r\n";
+		console.log(l);
+		fs.write(fd, l, 0, 'utf8', function(e){
+			if(e)
+				throw e;
+			fs.closeSync(fd);
+		})
+	})
+
+	res.contentType('json');
+	res.send(JSON.stringify({ status:"return hongbao."}));
+	res.end();
+}

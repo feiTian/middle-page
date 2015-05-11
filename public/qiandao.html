@@ -34,7 +34,7 @@
 	            contentType: "application/json; charset=utf-8",
 	            crossDomain: true
 	        });
-	        var apiHost = 'http://123.57.254.32:9000/';//'http://localhost:9000/'; //
+	        var apiHost = 'http://localhost:9000/'; //'http://123.57.254.32:9000/';//
 	        var query = {
 	                      "device": {
 	                        "did": "09fc4c589a4e03779f1935518c3df2a7",
@@ -57,6 +57,7 @@
 	                        }
 	                      ],
 	                      "requestid": "b6b01bcb5c2d4421c58718a680466422",
+	                      "phonenumber": "",
 	                      "userid": "904436969",
 	                      "phonetype": "1"
 	                    };
@@ -76,13 +77,38 @@
             //getAd('#ad_img_2', null);
             //getAd('#ad_img_3', null);
 
+            function getHongbao(){
+            	console.log('get hongbao');
+	            $.post(apiHost + "getHongbao",
+					JSON.stringify(query),
+					function(data){
+	                    console.log(data);
+	            }).fail(function(xHr, status, message){
+	                console.log('error');
+	                //callback(message, "Fail");        
+	            });            	
+            }
+
             function popup(ad){
+
             	window.location.href='./hongbao.html?'+ad;
             	//$("#dialog").dialog();
             }
+            function getUrlParam(name){
+            	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) 
+					return unescape(r[2]); 
+				return null;
+            }
+            function init() {
+            	query.phonenumber = getUrlParam('phonenumber');
+            	console.log(query);
+            	getHongbao();
+            }
 		</script>
 	</head>
-	<body>
+	<body onload="init()">
 		<div class="container">
 			<header>
 				<nav>

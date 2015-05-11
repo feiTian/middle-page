@@ -23,6 +23,8 @@ app.use(bodyParser.json());
 
 
 app.post('/AdRequest', userRequest.AdRequest);
+app.post('/getHongbao', userRequest.getHongbao);
+
 
 var server = app.listen(9000, function () {
 
