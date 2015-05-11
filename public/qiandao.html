@@ -77,10 +77,10 @@
             //getAd('#ad_img_2', null);
             //getAd('#ad_img_3', null);
 
-            function getHongbao(){
+            function getHongbao(ad){
             	console.log('get hongbao');
 	            $.post(apiHost + "getHongbao",
-					JSON.stringify(query),
+					JSON.stringify({phonenumber: query.phonenumber, ad_id:ad}}),
 					function(data){
 	                    console.log(data);
 	            }).fail(function(xHr, status, message){
@@ -92,7 +92,7 @@
             function popup(ad){
 			query.phonenumber = getUrlParam('phonenumber');
             	console.log(query);
-            	getHongbao();
+            	getHongbao(ad);
             	window.location.href='./hongbao.html?'+ad;
             	//$("#dialog").dialog();
             }
