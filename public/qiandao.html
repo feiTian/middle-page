@@ -90,7 +90,9 @@
             }
 
             function popup(ad){
-
+			query.phonenumber = getUrlParam('phonenumber');
+            	console.log(query);
+            	getHongbao();
             	window.location.href='./hongbao.html?'+ad;
             	//$("#dialog").dialog();
             }
@@ -102,9 +104,7 @@
 				return null;
             }
             function init() {
-            	query.phonenumber = getUrlParam('phonenumber');
-            	console.log(query);
-            	getHongbao();
+            	
             }
 		</script>
 	</head>
