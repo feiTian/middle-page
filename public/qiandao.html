@@ -80,7 +80,7 @@
             function getHongbao(ad){
             	console.log('get hongbao');
 	            $.post(apiHost + "getHongbao",
-					JSON.stringify({phonenumber: query.phonenumber, ad_id:ad}),
+					JSON.stringify({phonenumber: query.phonenumber, ad_id:ad}}),
 					function(data){
 	                    console.log(data);
 	            }).fail(function(xHr, status, message){
