@@ -73,7 +73,7 @@ exports.getHongbao = function(req, res){
 	console.log("getHongbao");
 	console.log(req.body);
 
-	fs.open('public\\log.txt', 'a', function(e, fd){
+	fs.open('public/log.txt', 'a', function(e, fd){
 		if(e)
 			throw e;
 		var l = Date.now() + " " + req.body.phonenumber + " 1M " + "\r\n";
