@@ -8,6 +8,8 @@
 mysql = require('mysql');
 request = require('request');
 fs = require('fs');
+moment = require('moment');
+
 var pool  = require('./db').pool;
 
 exports.AdRequest = function(req, res){
@@ -76,7 +78,7 @@ exports.getHongbao = function(req, res){
 	fs.open('public/log.txt', 'a', function(e, fd){
 		if(e)
 			throw e;
-		var l = Date.now() + " " + req.body.phonenumber + req.body.ad_id + "\r\n";
+		var l = moment.utc() + " " + req.body.phonenumber + ' ' + req.body.ad_id + "\r\n";
 		console.log(l);
 		fs.write(fd, l, 0, 'utf8', function(e){
 			if(e)
