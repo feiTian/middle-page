@@ -1,9 +1,6 @@
 var express = require('express')
   , bodyParser = require('body-parser')
-  , routes = require('./routes')
-  , user = require('./routes/user')
   , userRequest = require('./routes/userRequest')
-  , restaurant = require('./routes/restaurant');
 
 var app = express()
 
