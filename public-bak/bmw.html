@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8" /> 
+    <title>中间页</title> 
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" /> 
+    <meta name="author" content="" /> 
+    <link href="css/bootstrap.css" rel="stylesheet" /> 
+    <link href="css/buttons.css" rel="stylesheet" /> 
+    <link href="css/flat.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="./css/frame.css" type="text/css" rel="stylesheet" charset="utf-8">
+    <link href="./css/home_A.css" type="text/css" rel="stylesheet" charset="utf-8">
+    <link id="skin_style" href="./css/skin.css" type="text/css" rel="stylesheet" charset="utf-8">
+    <style type="text/css">
+        .hey-btn { display: inline-block; background-color: #fe532d; color: white; text-decoration: none; font-family: 'Microsoft YaHei', sans-serif; text-align: center; border: none; cursor: pointer; }
+        .hey-btn:hover { background-color: #ff8600; color: #ffffff; text-decoration: none; }
+        .hey-btn-default { font-size: 1.1em; padding: 0.5em 0.9em; }
+
+        .sidebar-nav nav{margin: 0;width: 100%;position: absolute;top: 0;bottom: 0;background-color: rgb(212,61,61);text-align: center;}
+        .sidebar-nav nav dl{margin-top: 0em;text-align: center;}
+        .sidebar-nav nav dl dd{line-height: 400%;cursor: pointer;position: relative;float: left;font-size: 13px;padding-right: 15px;}
+        .sidebar-nav nav dl dd.active{color: #fff;background-color:white;}
+        .sidebar-nav nav dl dd.active a{color: #fff}
+        .sidebar-nav nav dl dd a{color: #fff}
+    </style> 
+</head> 
+<body style="text-align: center;"> 
+    <div>
+        <div id="sidebar-wrapper" style="">
+            <div class="sidebar-nav" style="text-align:center">
+                <nav id="J_menuList" style="text-align:center;background-color:white;height:3em;">
+                    <dl>
+                        <dd style="padding-left:0.4em;width:18%;padding:0px;">
+                            <a style="font-size:1.2em;color:black;font-weight:bold;" ><img src="images\left.png"/></a>
+                        </dd>
+                        <dd style="width:64%;padding:0px;">
+                            <a style="font-size:1.2em;color:black;font-weight:bold;" >流量红包</a>
+                        </dd>
+                        <dd style="float:right;width:18%;padding:0px;" onclick="" keydown="">
+                            <a class="" style="font-size:1em;background-color:white;color:black;border-radius:3px;border: 1px solid grey;text-align:center;padding:0.5em;" href="http://17wo.cn/Index.action?">首页</a>
+                        </dd>
+                    </dl>
+                </nav>
+            </div>
+        </div>
+        <div id="J_list_Container" style="position:relative;top:4em;">
+        </div>
+    </div>
+
+    <div id="loadingView" class="viewer">
+        <div class="container">
+            <div class="col-md-12 clearfix loading">
+            </div>
+        </div>
+    </div><!-- Le javascript
+    ================================================== --> 
+  <!-- Placed at the end of the document so the pages load faster --> 
+  <script src="js/jquery.js"></script> 
+  <script src="js/bootstrap.min.js"></script> 
+  <script>
+		var iG = iG||{};
+        if(window.localStorage){
+            try{
+                iG = JSON.parse(localStorage["zaiG"])||{};
+            }catch(e){
+                localStorage.removeItem("zaiG");
+                iG = iG||{};
+            }
+        }else{
+            iG = iG||{};
+        }
+		$(function(){
+			setTimeout(function () { window.scrollTo(0, 1); }, 0);
+			
+            setTimeout(function () {
+                iG.items={
+            "返回":[{id:"1",name:"恭喜拿到宝马i8一起沃流量红包，可兑换为手机流量",cls:"返回",price:"15",sels:"45",imageUrl:"images/ford.jpg"}
+                    ],
+			};
+                init();//ajax成功后执行init(); 
+            }, 20);//模拟ajax请求时间
+
+            /*$("body").on("click","#J_menuList dd",function(){
+                iG.indexMenu = $(this).children("a").attr("data_name");
+                $("#J_list_Container").html(listManger(iG.items));
+                $("#J_menuList .active").removeClass("active");
+                $(this).addClass("active");
+            });*/
+		});
+        function init(){
+            setMenu(iG.items);
+			$("#J_list_Container").html(listManger(iG.items));
+            $("#loadingView").addClass("hide");
+        }
+        
+        function setMenu(_list){
+            iG.menu = [];
+            iG.indexMenu = (function(){
+                var menu;
+                var count = 0;
+                for(var i in _list){
+                    if(count===0){
+                        menu =  i;
+                    }
+                    count++;
+                    iG.menu.push(i);
+                }
+                return menu;
+            })();
+            buildMenu(iG.menu);
+        }
+        
+        function buildMenu(_list){
+            var menuHtml = "<dl style=\"text-align:center\">";
+            var active;
+            for(var i in _list){
+                active = "";
+                if(_list[i]===iG.indexMenu)active = "active";
+                menuHtml += "<dd class=\""+active+"\" style=\"padding-left:0.4em;width:5em;\"><a style=\"font-size:1.2em;\" data_name=\""+ _list[i] +"\">"+ _list[i] +"</a></dd>"
+            }
+			menuHtml += "</dl>";
+            //$("#J_menuList").html(menuHtml);
+        }
+        
+		function getIndex(_id){
+            var indexList = iG.items[iG.indexMenu];
+			for(var i in indexList){
+				if(indexList[i].id===_id){
+					return indexList[i]
+				}
+			}
+		}
+		
+		function listManger(_list){
+			var result = "";
+			var listArr = [];
+            var indexList = _list[iG.indexMenu];
+			for(var i in indexList){
+				listArr.push(indexList[i]);
+				if(Math.floor(i/3)===0&&i>2){
+					result += "<div";
+					result += buildList(listArr);
+					result += "</div>";
+					listArr = [];
+				}
+			}
+			result += "<div>";
+			result += buildList(listArr);
+			result += "</div>";
+			return result;
+		}
+		function buildList(_list){
+			var result = "";
+			for(var i in _list){
+				result += "<div class=\"WB_cardwrap WB_feed_type S_bg2\" style=\"background-color:white;text-align: center;\">"+
+                                "<div style=\"text-align: center;\">"+
+                                        "<img src=\"./images/wo-logo.jpg\" style=\"width:20%;margin:1em;\">"+
+                                "</div>"+
+                                "<div class=\"WB_info\" style=\"margin: 0 auto; width:90%;border: 1px solid #BCBCBC;border-radius:5px;\">"+
+                                    "<a target=\"_blank\" class=\"W_f14\" href=\"\" style=\"color:rgb(72,72,72);font-size:1.5em;font-family:SimHei;display:block;\">"+
+                                        "恭喜拿到宝马i8一起沃流量红包"+"</a>"+
+                                    "<a target=\"_blank\" class=\"W_f14\" href=\"\" style=\"color:rgb(72,72,72);font-size:1.5em;font-family:SimHei;display:block;\">"+
+                                        "可兑换为手机流量"+"</a>"+
+                                "</div>"+
+                                "<div style=\"text-align: center;\">"+
+                                        "<img src=\"./images/银天下-640x240.jpg\" style=\"width:90%;margin:1em;\">"+
+                                "</div>"+
+                                "<div style=\"margin:0 auto;height:92px;margin-top:1em;background-image:url(./images/youhuiquan.png);background-repeat:no-repeat;background-position:center;\">"+
+                                    "<div style=\"margin:0 auto;width:300px;height:50px;vertical-align:middle;padding-top:18px;\">"+
+                                        "<a style=\"font-size: 50px;color:white;\">1M</a><span style=\"font-size: 2em;color:white;padding-right:100px;\">流量</span>"+
+                                    "</div>"+
+                                "</div>"+
+                                "<div class=\"WB_info\" style=\"margin-top:1em;\">"+
+                                    "<a target=\"_blank\" class=\"W_f14\" href=\"\" style=\"color:rgb(72,72,72);font-size:1.5em;font-family:SimHei;\">"+
+                                        "流量已放入一起沃流量账户"+"</a>"+
+                                "</div>"+
+                                "<div style=\"text-align:center;margin-top:1em;\">"+
+                                    "<a class=\"hey-btn hey-btn-default\" style=\"width:90%;font-size:1.4em;background-color: #FA8909;border-radius:5px;\">宝马i8</a>"+
+                                "</div>"+
+                        "</div>";
+			}
+			return result;
+		}
+	</script>  
+</body>
+</html>

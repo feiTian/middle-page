@@ -1,158 +1,210 @@
 <!DOCTYPE html>
-<html lang="zh">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="js/jquery.js"></script> 
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery-ui.js"></script>
+<html>
+<head>
 
-		<link rel="stylesheet" type="text/css" href="css/hongbao.css" />
-		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-		<style>
-	        .button {
-	            border-radius:3px;
-	            font-size:2.5vmin;
-	            font-family:'microsoft yahei', Arial, Helvetica, sans-serif;
-	            padding-top:0.2em;
-	            padding-bottom:0.2em;
-	            padding-left: 0px;
-	            padding-right: 0px;
-	            border: 1px solid #dd962d;
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-	            background-color: #EDEDED;
-	            color:#FF7B16;  
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="一起沃">
+<link rel="icon" href="http://112.96.28.216/wap/newtouch2015/theme/imgs/logo32.png" type="image/x-icon" />
+<link rel="shortcut icon" href="http://112.96.28.216/wap/newtouch2015/theme/imgs/logo32.png" type="image/x-icon" />
+<link rel="apple-touch-icon-precomposed" href="http://112.96.28.216/wap/newtouch2015/theme/imgs/logo80.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://112.96.28.216/wap/newtouch2015/theme/imgs/logo80.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://112.96.28.216/wap/newtouch2015/theme/imgs/logo120.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://112.96.28.216/wap/newtouch2015/theme/imgs/logo152.png">
 
-	            box-shadow: none !important;
-	            text-decoration: none;
-	        } 
-		</style>
-		<script type="text/javascript">
-	        $.ajaxSetup({
-	            contentType: "application/json; charset=utf-8",
-	            crossDomain: true
-	        });
-	        var apiHost = 'http://123.57.254.32:9000/';//'http://localhost:9000/'; //
-	        var query = {
-	                      "device": {
-	                        "did": "09fc4c589a4e03779f1935518c3df2a7",
-	                        "dpid": "c7299603f205f356b66625fb62b3a995",
-	                        "ip": "202.165.28.29",
-	                        "make": "Apple",
-	                        "model": "Iphone 5s",
-	                        "os": "ios",
-	                        "osv": "ios 7.0.1"
-	                      },
-	                      "browser": {
-	                        
-	                      },
-	                      "imp": [
-	                        {
-	                          "h": 120,
-	                          "impid": "08604401000010009",
-	                          "pos": 1,
-	                          "w": 640
-	                        }
-	                      ],
-	                      "requestid": "b6b01bcb5c2d4421c58718a680466422",
-	                      "phonenumber": "",
-	                      "userid": "904436969",
-	                      "phonetype": "1"
-	                    };
-	        var done = 0;
-	        function getAd(img_index, callback){
-	            $.post(apiHost + "AdRequest",
-	                JSON.stringify(query),  
-	                function(data){
-	                    console.log(data.adurl);
-	                    $(img_index).attr('src', data.adurl);	                    
-	            }).fail(function(xHr, status, message){
-	                console.log('error');
-	                //callback(message, "Fail");        
-	            });
-	        }
-            //getAd('#ad_img_1', null);
-            //getAd('#ad_img_2', null);
-            //getAd('#ad_img_3', null);
+<link type="text/css" rel="stylesheet" href="http://112.96.28.216/wap/newtouch2015/theme/global.min.css?v=5" />
 
-            function getHongbao(ad){
-            	console.log('get hongbao');
-	            $.post(apiHost + "getHongbao",
-					JSON.stringify({phonenumber: query.phonenumber, ad_id:ad}),
-					function(data){
-	                    console.log(data);
-	            }).fail(function(xHr, status, message){
-	                console.log('error');
-	                //callback(message, "Fail");        
-	            });            	
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/qiandao.js"></script>
+
+    <meta content="一起沃是联通基于移动互联网为3G用户提供的手机应用分享、下载平台。以好友圈子为互动核心，社会化媒体分享为纽带，以沃豆为手段实现用户下载手机软件、游戏、视频和图片等内容，并分享到好友圈，提升联通数据流量业务。wo.com.cn 17wo" name="description">
+    <meta content="wo,wo分享,沃分享,一起沃,17wo,联通,联通3G,手机应用,手机游戏,手机软件,手机视频,手机音乐,一键分享" name="keywords">
+    <title>一起沃</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var now = new Date(),
+            today = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate(),
+            showFullAdv = false;
+
+    setTimeout(scrollTo, 0, 0, 1);
+
+    if (showFullAdv){
+        var fa = $("#fullAdv");
+        $(".closeAdv").bind("click",function(){
+            $(window).unbind();
+            fa.fadeOut(500,function(){
+                fa.remove();
+            });
+        });
+    }
+
+</script>
+    <header id="header">
+            <h4>创意投票</h4>
+                <a href="javascript:history.back()" class="top-back"></a>   
+                <p class="right">
+                    
+                    
+                        <a href="./Index.action" class="btn-3">首页</a>
+                </p>
+    </header>
+<div id="content">
+    	<ul class="pannel-2 form-list">
+        <li>
+            <a>从三个作品中选择最有创意的一个投票得1M流量</a>
+        </li>
+    </ul>
+    <section class="pannel-2">
+        <h4 class="title-1">免税店直接发货，上市公司的保证！</h4>
+        <img src="images/jumei.jpg" alt="" />
+        <ul class="tlist-4">
+        <li>
+        	<a class="t-overflow" style="	vertical-align: middle;">
+          	<span class="right f-small btn-1" onclick="popup('jumei')">投票</span>
+            聚美优品
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="pannel-2">
+    	<h4 class="title-1">世界那么大，带上心爱的她去看看。主题房，5折起！</h4>
+      <img src="images/tujia.jpg" alt="" />
+   		<ul class="tlist-4">
+        <li>
+        	<a class="t-overflow" style="	vertical-align: middle;">
+          	<span class="right f-small btn-1"  onclick="popup('jumei')">投票</span>
+            途家网
+          </a>
+        </li>
+    	</ul>
+    </section>
+      <section class="pannel-2">
+      <h4 class="title-1">联通用户专享特价旅游，低到你不敢想！</h4>
+      <img src="images/zailushang.jpg" alt="" />
+   		<ul class="tlist-4">
+        <li>
+        	<a class="t-overflow" style="	vertical-align: middle;">
+          	<span class="right f-small btn-1"  onclick="popup('jumei')">投票</span>
+            在路上
+          </a>
+        </li>
+    	</ul>
+    </section>
+</div>
+    <footer id="footer">  
+            <a href="./Index.action" title="返回首页" class="foot-btn">返回首页</a>
+            <a href="javascript:document.body.scrollTop=0" title="返回顶部" class="foot-btn">返回顶部</a>
+            <p class="copyright f-small f-gray">© 2015 中国联通 粤ICP证10029056-11</p>        
+    </footer>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    
+    var isAppOpen = false; 
+
+    wx.config({
+        debug: false,
+        appId: 'wx90dc7e3e16b4b06e',
+        timestamp: '1431401645',
+        nonceStr: '73e89575-a280-4323-931d-3e09c885a271',
+        signature: '18dcdbeae040c47815726df972e31b83ca1f2842',
+        jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+        ]
+    });
+</script>
+
+<script type="text/javascript" src="./newtouch2015/scripts/wx.share.min.js?v=1.22"></script>
+<script>
+    var shareAddLog = "./Share!addShareLog.action?sharecontent=" + encodeURIComponent(wxData.desc);
+</script>
+<div style="display:none">
+    <script src="http://s20.cnzz.com/stat.php?id=3082302&web_id=3082302&show=pic" language="JavaScript"></script>
+</div>
+
+
+
+<script type="text/javascript">
+    var texts = ["红包要派，有钱要晒！", "流量太多谁知道，发个红包来炫耀！", "不发个红包，怎么算土豪？"];
+
+    init();
+
+    function init(){
+        var index = parseInt(texts.length * Math.random());
+        $("#tips").html(texts[index]);
+    }
+
+    (function(){
+
+        $("#submitBtn").bind("click", function(){
+            var _this = $(this), now = new Date();
+            if (_this.hasClass("js-login")){
+                window.location = "./Login.action";
+            }else if (_this.hasClass("js-dis")){
+                window.location = "./FlowRedPacket.action?pageName=earnflow";
+            }else{
+                $("#card").removeClass("packet-open");
+                $("#prize").html('');
+                wo.extra.defaultAjax("FlowRedPacket!LuckDraw.action?pageName=", function(res){
+                    setTimeout(function(){
+                        if (res.success){
+                            if (res.data.message.info){
+                                $("#prize").html('恭喜您获得<span>' + res.data.message.info + '</span>');
+                                if(res.data.message.awardType==9){
+                                    $("#prize").append('<p class="t-center f-median"><a href="./UserPreferential.action" class="f-blue">查询优惠券</a></p>');
+                                }
+                            }else{
+                                $("#prize").html("哎呀没中奖，明天再试试");
+                            }
+                            $("#card").addClass("packet-open");
+                            if (res.data.message.chance==0){
+                                _this.addClass("js-dis").text("流量不够，去赚>>");
+                            }else{
+                                _this.prop("value","再抽一次");
+                            }
+                        }else{
+                            wo.dom.alertError(wo.message.sysError);
+                        }
+                    },100);
+                });
+            }
+        });
+
+        scroll();
+        function scroll(){
+            var $box = $("#dataBox"), $ul = $($box.find("ul")[0]), h = $ul.height();
+            if ($ul.find("li").size() <= 4){
+                return false;
+            }
+            $box.css({
+                height : "200px",
+                overflow : "hidden"
+            })
+            $ul.append($ul.find("li").clone());
+
+            function play(){
+                $ul.css("margin-top", parseInt($ul.css("margin-top"))-1+"px");
+                if (parseInt($ul.css("margin-top")) <= -h){
+                    $ul.css("margin-top", "0px");
+                }
+                setTimeout(function(){
+                    play();
+                },30);
             }
 
-            function popup(ad){
-				query.phonenumber = getUrlParam('phonenumber');
-            	console.log(query);
-            	getHongbao(ad);
-            	window.location.href='./hongbao.html?'+ad;
-            	//$("#dialog").dialog();
-            }
-            function getUrlParam(name){
-            	var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-				var r = window.location.search.substr(1).match(reg);
-				if (r!=null) 
-					return unescape(r[2]); 
-				return null;
-            }
-            function init() {
-            	
-            }
-		</script>
-	</head>
-	<body onload="init()">
-		<div class="container">
-			<header>
-				<nav>
-					<a style="height:5em;">创意投票
-					<h2>从三个作品中选择最有创意的一个投票得1M流量</h2>
-					</a>
-					</nav>
-			</header>
-			<section>
-						<div class="mediabox" id="ad_2">
-							<h3>免税店直接发货，上市公司的保证！</h3>
-							
-							<img src="images/jumei.jpg" alt="img02" id="ad_img_2"/>
-							<a class="adflag">推广</a>
-							<a class="adname">&nbsp;&nbsp;聚美&nbsp;&nbsp;</a>
-							<a class="adname">投票数 10</a>
-							<a href="javascript:popup('jumei');" class="button" style="line-height:1.2em;font-size:1.5em;padding:0 1em;margin:0.1em;float:right;">投票</a>
-							<li class=""></li>
-						</div>
-						<div class="mediabox" id="ad_3">
-							<h3>世界那么大，带上心爱的她去看看。主题房，5折起！
-							</h3>
-							<img src="images/tujia.jpg" alt="img03" id="ad_img_3"/>
-							<a class="adflag">推广</a>
-							<a class="adname">&nbsp;&nbsp;途家网&nbsp;&nbsp;</a>
-							<a class="adname">投票数 10</a>
-							<a href="javascript:popup('tujia');" class="button" style="line-height:1.2em;font-size:1.5em;padding:0 1em;margin:0.1em;float:right;">投票</a>
-							<li class=""></li>
-						</div>
-						<div class="mediabox" id="ad_1">
-							<h3>联通用户专享特价旅游，低到你不敢想！
-							</h3>
-							
-							<img src="images/zailushang.jpg" alt="img01" id="ad_img_1"/>
-							<a class="adflag">推广</a>
-							<a class="adname">&nbsp;&nbsp;在路上&nbsp;&nbsp;</a>
-							<a class="adname">投票数 10</a>
-							<a href="javascript:popup('zailushang');" class="button" style="line-height:1.2em;font-size:1.5em;padding:0 1em;margin:0.1em;float:right;">投票</a>
-						</div>
-			</section>
-		</div>
+            play();
+        }
 
-		<div id="dialog" title="恭喜您！" style="display:none;">
-			<p>您已获得10M流量</p>
-		</div>
-	</body>
+    }());
+</script>
+</body>
 </html>

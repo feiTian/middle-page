@@ -18,7 +18,9 @@
 
 <link type="text/css" rel="stylesheet" href="http://112.96.28.216/wap/newtouch2015/theme/global.min.css?v=5" />
 
-<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="./newtouch2015/scripts/jquery-1.8.2.min.js?v=2"></script>
+<script type="text/javascript" src="./newtouch2015/scripts/comm.min.js?v=2"></script>
+<script type="text/javascript" src="./newtouch2015/scripts/scroll.min.js?v=2"></script>
 
     <meta content="一起沃是联通基于移动互联网为3G用户提供的手机应用分享、下载平台。以好友圈子为互动核心，社会化媒体分享为纽带，以沃豆为手段实现用户下载手机软件、游戏、视频和图片等内容，并分享到好友圈，提升联通数据流量业务。wo.com.cn 17wo" name="description">
     <meta content="wo,wo分享,沃分享,一起沃,17wo,联通,联通3G,手机应用,手机游戏,手机软件,手机视频,手机音乐,一键分享" name="keywords">
@@ -45,7 +47,7 @@
 
 </script>
     <header id="header">
-            <h4>流量红包</h4>
+            <h4>创意投票</h4>
                 <a href="javascript:history.back()" class="top-back"></a>   
                 <p class="right">
                     
@@ -54,29 +56,44 @@
                 </p>
     </header>
 <div id="content">
-    <ul class="pannel-2 form-list" style="text-align: center;" >
+    	<ul class="pannel-2 form-list">
         <li>
-            <a  id="cong">恭喜你获得途家网一起沃流量红包，可兑换为手机流量</a>
+            <a>从三个作品中选择最有创意的一个投票得1M流量</a>
         </li>
     </ul>
-
     <section class="pannel-2">
-        <h4 id="slogan" class="title-1">世界那么大，带上心爱的她去看看。主题房，5折起！</h4>
-        <img id="ad_image" src="images/tujia.jpg" alt="" />
+        <h4 class="title-1">免税店直接发货，上市公司的保证！</h4>
+        <img src="images/jumei.jpg" alt="" />
+        <ul class="tlist-4">
+        <li>
+        	<a class="t-overflow" style="	vertical-align: middle;">
+          	<span class="right f-small btn-1">投票</span>
+            聚美优品
+          </a>
+        </li>
     </section>
-    <section class="pannel-2">
-        <img src="images/coupon.png" alt="" />
     </section>
-
-    <form name="form1" id="form1" method="post" action="./Login!process.action">
-        <ul class="pannel-2 form-list">
-            <li>
-                <p class="mg5-10">
-                    <input type="button" class="btn-1 w-full h-36" value="途家网" id="brand"/>
-                </p>
-            </li>
-        </ul>
-    </form>
+        <section class="pannel-2">
+        <h4 class="title-1">世界那么大，带上心爱的她去看看。主题房，5折起！</h4>
+        <img src="images/tujia.jpg" alt="" />
+        <li>
+        	<a class="t-overflow" style="	vertical-align: middle;">
+          	<span class="right f-small btn-1">投票</span>
+            途家网
+          </a>
+        </li>
+    </section>
+    </section>
+        <section class="pannel-2">
+        <h4 class="title-1">联通用户专享特价旅游，低到你不敢想！</h4>
+        <img src="images/zailushang.jpg" alt="" />
+        <li>
+        	<a class="t-overflow" style="	vertical-align: middle;">
+          	<span class="right f-small btn-1">投票</span>
+            在路上
+          </a>
+        </li>
+    </section>
 </div>
     <footer id="footer">  
             <a href="./Index.action" title="返回首页" class="foot-btn">返回首页</a>
