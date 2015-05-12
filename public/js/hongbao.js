@@ -43,6 +43,8 @@ function getAd(callback){
     });
 }
 
+var adurl = '';
+
 function init() {
 	//getAd(null);
 	console.log(window.location.search);
@@ -53,15 +55,24 @@ function init() {
 		$('#cong').html(cong_str.format("聚美"));
 		$('#slogan').html('免税店直接发货，上市公司的保证！');
 		$('#brand').val("聚美");
-	}else if(ad == 'tujia'){
+		adurl="http://d.jumei.com?fr=liantongceshi";
+	}else if(ad == 'tujia' || ad == ''){
 		$('#ad_image').attr('src', 'images/tujia.jpg');
 		$('#cong').html(cong_str.format("途家"));
 		$('#slogan').html('世界那么大，带上心爱的她去看看。主题房，5折起！');
 		$('#brand').val("途家");
+		adurl="http://go.tujia.com/3116/?code=m18";
 	}else if(ad == 'zailushang'){
 		$('#ad_image').attr('src', 'images/zailushang.jpg');
 		$('#cong').html(cong_str.format("在路上"));
 		$('#slogan').html('联通用户专享特价旅游，低到你不敢想！');
 		$('#brand').val("在路上");
+		adurl="http://tao.117go.com/downloads";
 	}
+
+
+}
+
+function toAdurl(){
+	window.location.href=adurl;
 }

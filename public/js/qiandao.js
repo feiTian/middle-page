@@ -58,12 +58,13 @@ function getHongbao(ad){
 }
 
 function popup(ad){
-	query.phonenumber = getUrlParam('phonenumber');
+  query.phonenumber = getUrlParam('phonenumber');
   console.log(query.phonenumber);
-	console.log(query);
-	getHongbao(ad);
-	window.location.href='./hongbao.html?'+ad;
-	//$("#dialog").dialog();
+  console.log(query);
+  getHongbao(ad);
+  window.location.href='./hongbao.html?'+ad;
+
+  	//$("#dialog").dialog();
 }
 
 function init() {
