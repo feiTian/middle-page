@@ -51,8 +51,8 @@ function init() {
 	if(ad == 'jumei'){
 		$('#ad_image').attr('src', 'images/jumei.jpg');
 		$('#cong').html(cong_str.format("聚美"));
-		$('#brand').val("聚美");
 		$('#slogan').html('免税店直接发货，上市公司的保证！');
+		$('#brand').val("聚美");
 	}else if(ad == 'tujia'){
 		$('#ad_image').attr('src', 'images/tujia.jpg');
 		$('#cong').html(cong_str.format("途家"));
