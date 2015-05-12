@@ -45,6 +45,7 @@ function getAd(callback){
 
 function init() {
 	//getAd(null);
+	console.log(window.location.search);
 	var ad = window.location.search.replace('?','');
 	var cong_str = '恭喜拿到<span style="color:#FA8909">【{0}】</span>一起沃流量红包，可兑换为手机流量';
 	if(ad == 'jumei'){
