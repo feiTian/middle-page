@@ -61,13 +61,13 @@ function init() {
 		$('#cong').html(cong_str.format("途家"));
 		$('#slogan').html('世界那么大，带上心爱的她去看看。主题房，5折起！');
 		$('#brand').val("途家");
-		adurl="http://go.tujia.com/3116/?code=m18";
+		adurl="http://go.tujia.com/3122/?code=GDT";
 	}else if(ad == 'zailushang'){
 		$('#ad_image').attr('src', 'images/zailushang.jpg');
 		$('#cong').html(cong_str.format("淘在路上"));
 		$('#slogan').html('联通用户专享特价旅游，低到你不敢想！');
 		$('#brand').val("淘在路上");
-		adurl="http://go.tujia.com/3122/?code=GDT";
+		adurl="http://tao.117go.com/downloads";
 	}
 
 
