@@ -69,8 +69,6 @@ function init() {
 		$('#brand').val("淘在路上");
 		adurl="http://tao.117go.com/downloads";
 	}
-
-
 }
 
 function toAdurl(){

@@ -4,7 +4,7 @@ exports.pool  = mysql.createPool({
 	host     : 'localhost',
 	user     : 'root',
 	password : 'root',
-	database : 'dianping'
+	database : '*'
 });
 
 //export.pool = function(){
