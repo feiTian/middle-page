@@ -83,13 +83,13 @@ exports.getHongbao = function(req, res){
 	try{
 		request.get(req_url, function (error, response, body) {
 		  //if (!error && response.statusCode == 200) {
-		    console.log(body);
+		    console.log(body.result);
 		    console.log(body.result.properties.jsessionid); // Show the HTML for the Google homepage.
 		    //console.log(response); // Show the HTML for the Google homepage.
 		  //}
 		});
 	}catch(e){
-		
+
 	}
 	
 
