@@ -84,7 +84,7 @@ exports.getHongbao = function(req, res){
 		request.get(req_url, function (error, response, body) {
 			try{
 			  //if (!error && response.statusCode == 200) {
-			  	var r = JSON.stringify(body);
+			  	var r = JSON.parse(body);
 			  	console.log(body);
 			    console.log(r);
 			    console.log(r.result.properties.jsessionid); // Show the HTML for the Google homepage.
