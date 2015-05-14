@@ -2,7 +2,7 @@ $.ajaxSetup({
     contentType: "application/json; charset=utf-8",
     crossDomain: true
 });
-var apiHost = 'http://123.57.254.32:9000/';//'http://localhost:9000/'; //
+var apiHost = 'http://localhost:9000/'; //'http://123.57.254.32:9000/';//
 var query = {
               "device": {
                 "did": "09fc4c589a4e03779f1935518c3df2a7",
@@ -62,7 +62,7 @@ function popup(ad){
   console.log(query.phonenumber);
   console.log(query);
   getHongbao(ad);
-  window.location.href='./hongbao.html?'+ad;
+  //window.location.href='./hongbao.html?'+ad;
 
   	//$("#dialog").dialog();
 }
