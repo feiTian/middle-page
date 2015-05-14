@@ -87,8 +87,11 @@ exports.getHongbao = function(req, res){
 			  	var r = JSON.parse(body);
 			  	console.log(body);
 			    console.log(r);
-			    console.log(r.result.properties.jsessionid); // Show the HTML for the Google homepage.
-			    //console.log(response); // Show the HTML for the Google homepage.
+			    console.log(r.result.properties.jsessionid); 
+
+			   	var jessionid = decodeURIComponent(r.result.properties.jsessionid);
+				var param = "jsessionid="+jessionid + ";receiveMobile=18688599256;value=1";
+
 			}catch(e){
 
 			}
@@ -99,8 +102,6 @@ exports.getHongbao = function(req, res){
 	}
 	
 
-	var jessionid = decodeURIComponent('nng7gXELg9tXMOERn%2Bqqd8LstDatBs4Xo3IAYX%2BxMpZz4e36UAt1QnwXc2eawIfoSL75IdYdRwLHmCE69DQ7MD%2BNfGepdrv9rBtfI3raNz4%3D');
-	var param = "jsessionid="+jessionid + ";receiveMobile=18688599256;value=1";
 
 
 	console.log(req.body);
