@@ -80,13 +80,17 @@ exports.getHongbao = function(req, res){
 	console.log("cip_r is: " + cip_r);
 	var baseurl = 'http://fx.17wo.cn/external/auth/AuthCenterGetJsessionidByMobile/WestTower?u=';
 	var req_url = baseurl + cip_r;
-	request.get(req_url, function (error, response, body) {
-	  //if (!error && response.statusCode == 200) {
-	    console.log(error);
-	    console.log(body.result.properties.jsessionid); // Show the HTML for the Google homepage.
-	    console.log(response); // Show the HTML for the Google homepage.
-	  //}
-	});
+	try{
+		request.get(req_url, function (error, response, body) {
+		  //if (!error && response.statusCode == 200) {
+		    console.log(body);
+		    console.log(body.result.properties.jsessionid); // Show the HTML for the Google homepage.
+		    //console.log(response); // Show the HTML for the Google homepage.
+		  //}
+		});
+	}catch(e){
+		
+	}
 	
 
 	var jessionid = decodeURIComponent('nng7gXELg9tXMOERn%2Bqqd8LstDatBs4Xo3IAYX%2BxMpZz4e36UAt1QnwXc2eawIfoSL75IdYdRwLHmCE69DQ7MD%2BNfGepdrv9rBtfI3raNz4%3D');
