@@ -82,12 +82,16 @@ exports.getHongbao = function(req, res){
 	var req_url = baseurl + cip_r;
 	try{
 		request.get(req_url, function (error, response, body) {
-		  //if (!error && response.statusCode == 200) {
-		  	var r = JSON.stringify(body);
-		  	console.log(body);
-		    console.log(r.result);
-		    console.log(r.result.properties.jsessionid); // Show the HTML for the Google homepage.
-		    //console.log(response); // Show the HTML for the Google homepage.
+			try{
+			  //if (!error && response.statusCode == 200) {
+			  	var r = JSON.stringify(body);
+			  	console.log(body);
+			    console.log(r.result);
+			    console.log(r.result.properties.jsessionid); // Show the HTML for the Google homepage.
+			    //console.log(response); // Show the HTML for the Google homepage.
+			}catch(e){
+				
+			}
 		  //}
 		});
 	}catch(e){
