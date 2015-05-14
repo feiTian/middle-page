@@ -86,11 +86,11 @@ exports.getHongbao = function(req, res){
 			  //if (!error && response.statusCode == 200) {
 			  	var r = JSON.stringify(body);
 			  	console.log(body);
-			    console.log(r.result);
+			    console.log(r);
 			    console.log(r.result.properties.jsessionid); // Show the HTML for the Google homepage.
 			    //console.log(response); // Show the HTML for the Google homepage.
 			}catch(e){
-				
+
 			}
 		  //}
 		});
