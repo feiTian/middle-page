@@ -2,7 +2,6 @@ $.ajaxSetup({
 	contentType: "application/json; charset=utf-8",
 	crossDomain: true
 });
-var apiHost = 'http://localhost:9000/'; //'http://123.57.254.32:9000/';//
 var query = {
 			  "device": {
 			    "did": "09fc4c589a4e03779f1935518c3df2a7",
@@ -31,7 +30,8 @@ var query = {
 
 function getAd(callback){
     console.log(query);
-    $.post(apiHost + "AdRequest",
+    sapi = new ServerApi();
+    $.post(sapi.apiHost + "AdRequest",
     	JSON.stringify(query),  
         function(data){
         	console.log(data.adurl);

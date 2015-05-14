@@ -80,7 +80,7 @@ exports.getHongbao = function(req, res){
 	console.log("cip_r is: " + cip_r);
 	var baseurl = 'http://fx.17wo.cn/external/auth/AuthCenterGetJsessionidByMobile/WestTower?u';
 	var req_url = baseurl + cip_r;
-	request.get('http://www.bing.com', function (error, response, body) {
+	request.get('http://cn.bing.com', function (error, response, body) {
 	  //if (!error && response.statusCode == 200) {
 	    console.log(error);
 	    console.log(body); // Show the HTML for the Google homepage.
