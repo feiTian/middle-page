@@ -47,6 +47,59 @@
     }
 
 </script>
+
+<script type="text/javascript" charset="utf-8">
+    function SImage(callback, myImg, impression)
+    {
+        var img = new Image();
+        this.img = img;
+        var appname = navigator.appName.toLowerCase();
+        if (appname.indexOf("netscape") == -1)
+        {
+           //ie
+            img.onreadystatechange = function () {
+                if (img.readyState == "complete")
+                {
+                    callback(img, myImg, impression);
+                }
+            };
+        } else {
+           //firefox
+            img.onload = function () {
+                if (img.complete == true)
+                {
+                    callback(img, myImg, impression);
+                }
+            }
+        }
+    }
+
+    SImage.prototype.get = function (adurl)
+    {
+        this.img.src = adurl;
+    }
+
+    function icall(obj, myImg, impression)
+    {
+        console.log("icall");
+        myImg.attr("src",obj.src);
+        impression = "http://124.207.207.26:8080/RTB/impTrack?requestid=46ca26482bf197054390178021d71a55&impression=http://im.optaim.com/i?info=CoMBCis0NmNhMjY0ODJiZjE5NzA1NDM5MDE3ODAyMWQ3MWE1NV8wXzI3ODcxMTUzEiBiZGYyYjA1NDZjODljOTExOWM2YTU3MmYxYWIyYmY3ZBi9mgQgzCwolQsw1AM6IGIwMmQ2ZWQ0NzYyNWEwMjljM2Q4MzJjYjViNmNkNTdlQIAFSHgSAnh0GNHXvakFIhEIABDoBxjoByDoBygBMAA4ACoICAASABgMQAYwtBA6BXp5ei00QABQAGAAaQAAAAAAAPA/cIbvKaIBBzM3Y2QwODWoAQE=&isPb=1";
+        $.ajax({
+            url: impression,
+            dataType:"jsonp",
+            success:function(data){
+                
+            }
+        });
+    }
+    var img1 = new SImage(icall, $("#img_1"), "impression");
+    img1.get("images/jumei.jpg");
+    var img2 = new SImage(icall, $("#img_2"), "impression");
+    img2.get("images/tujia.jpg");
+    var img3 = new SImage(icall, $("#img_3"), "impression");
+    img3.get("images/tujia.jpg"); 
+</script>
+
     <header id="header">
             <h4>创意投票</h4>
                 <a href="http://fx.17wo.cn:8080/wap/FlowRedPacket.action" class="top-back"></a>   
@@ -62,7 +115,7 @@
     </ul>
     <section class="pannel-2">
         <a href="http://d.jumei.com?fr=liantongceshi"><h4 class="title-1">免税店直接发货，上市公司的保证！</h4></a>
-        <a href="http://d.jumei.com?fr=liantongceshi"><img src="images/jumei.jpg" alt="" /></a>
+        <a href="http://d.jumei.com?fr=liantongceshi"><img id="img_1" src="images/jumei.jpg" alt="" /></a>
         <ul class="tlist-4">
         <li>
         	<a class="t-overflow" href="http://d.jumei.com?fr=liantongceshi" style="vertical-align: middle; width:5em;float:left;">聚美优品</a>
@@ -72,7 +125,7 @@
     </section>
     <section class="pannel-2">
     	<a href="http://go.tujia.com/3122/?code=GDT"><h4 class="title-1">世界那么大，带上心爱的她去看看。主题房，5折起！</h4></a>
-        <a href="http://go.tujia.com/3122/?code=GDT"><img src="images/tujia.jpg" alt="" /></a>
+        <a href="http://go.tujia.com/3122/?code=GDT"><img id="img_2" src="images/tujia.jpg" alt="" /></a>
    		<ul class="tlist-4">
         <li>
         	<a class="t-overflow" href="http://go.tujia.com/3122/?code=GDT" style="vertical-align: middle; width:5em;float:left;">途家网</a>
@@ -82,7 +135,7 @@
     </section>
       <section class="pannel-2">
       <a href="http://tao.117go.com/downloads"><h4 class="title-1">联通用户专享特价旅游，低到你不敢想！</h4></a>
-      <a href="http://tao.117go.com/downloads"><img src="images/zailushang.jpg" alt="" /></a>
+      <a href="http://tao.117go.com/downloads"><img id="img_3" src="images/zailushang.jpg" alt="" /></a>
    		<ul class="tlist-4">
         <li>
         	<a class="t-overflow" href="http://tao.117go.com/downloads" style="vertical-align: middle; width:5em;float:left;">淘在路上</a>
