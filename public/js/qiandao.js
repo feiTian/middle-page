@@ -53,6 +53,11 @@ function getHongbao(ad){
 		JSON.stringify({phonenumber: query.phonenumber, ad_id:ad}),
 		function(data){
             console.log(data);
+            if(data.code == 1){
+              alert("恭喜您获得1M红包流量");
+            }else if(data.code == 0){
+              alert("今天已经领取过了，谢谢。");
+            }
     }).fail(function(xHr, status, message){
         console.log('error');
         //callback(message, "Fail");        

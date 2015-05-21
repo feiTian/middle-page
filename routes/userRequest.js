@@ -11,6 +11,8 @@ fs = require('fs');
 moment = require('moment');
 assert = require('assert');
 crypto = require('crypto');
+var mongodb = require('./mongo-lib/mongodb');
+var UserlogModel = mongodb.UserlogModel;
 
 var pool  = require('./db').pool;
 
@@ -73,9 +75,60 @@ exports.AdRequest = function(req, res){
 	}
 };
 
-exports.getHongbao = function(req, res){
-	console.log("getHongbao");
+function addUserlog(inst) {
+    console.log("add user");
+    
+    /*var instance = new UserlogModel(json);
+    instance.save(function(err){
+        console.log("error: " + err);
+    })*/
+	//updateUserlog(json, newlog);
+};
 
+function updateUserlog(ul, newlog){
+	console.log("update userlog");
+    UserlogModel.findOneAndUpdate(
+        {mobile: ul.mobile},
+        {
+        	$set: {
+        		name: ul.name,
+        		mobile: ul.mobile,
+        		email: ul.email
+        	},
+
+            $push: {
+                liuliang: newlog
+            }
+
+        },
+        {
+            upsert: true
+        },
+        function (err, deal) {
+            if (err) {
+                console.log('update user: ' + err);
+            }
+            console.log('updated a user');
+            giveHongbao(ul, newlog);
+        });
+}
+
+function hasToday(ul, newlog, callback){
+	UserlogModel.find(
+		{mobile: ul.mobile, 'liuliang.lltime': newlog.lltime},
+		function(err, res){
+			if(res.length > 0){
+				console.log("exists.");
+				callback(false);
+			}else{
+				console.log("not exists");
+				updateUserlog(ul, newlog);
+				callback(true);
+			}
+		});
+}
+
+function giveHongbao(ul, newlog){
 	var cip_r = Encry2("mobile=18688599256");
 	console.log("cip_r is: " + cip_r);
 	var baseurl = 'http://fx.17wo.cn/external/auth/AuthCenterGetJsessionidByMobile/WestTower?u=';
@@ -100,16 +153,11 @@ exports.getHongbao = function(req, res){
 	}catch(e){
 
 	}
-	
-
-
-
-	console.log(req.body);
 
 	fs.open('public/log.txt', 'a', function(e, fd){
 		if(e)
 			throw e;
-		var l = moment().format('YYYY-MM-DD HH:mm:ss') + " " + req.body.phonenumber + ' ' + req.body.ad_id + "\r\n";
+		var l = moment().format('YYYY-MM-DD HH:mm:ss') + " " + ul.mobile + ' ' + newlog.ad_id + "\r\n";
 		console.log(l);
 		fs.write(fd, l, 0, 'utf8', function(e){
 			if(e)
@@ -117,10 +165,35 @@ exports.getHongbao = function(req, res){
 			fs.closeSync(fd);
 		})
 	})
+}
 
-	res.contentType('json');
-	res.send(JSON.stringify({ status:"return hongbao."}));
-	res.end();
+exports.getHongbao = function(req, res){
+	console.log("getHongbao");
+    var ul = {
+        name: "test",
+        mobile: req.body.phonenumber,
+        email:""
+    };
+    var newlog = {
+    	ad_id: req.body.ad_id,
+    	llnumber: 1,
+    	lltime: moment().format('YYYY-MM-DD')
+    }
+    console.log(ul);
+    console.log(newlog);
+	hasToday(ul, newlog, function(giveOrnot){
+		if(giveOrnot){
+			//give hongbao
+			res.contentType('json');
+			res.send(JSON.stringify({ status:"return hongbao.", code: 1}));
+			res.end();
+		}else{
+			//not give honbgao
+			res.contentType('json');
+			res.send(JSON.stringify({ status:"return no hongbao.", code: 0}));
+			res.end();
+		}
+	});
 }
 
 function Encry2(params){
